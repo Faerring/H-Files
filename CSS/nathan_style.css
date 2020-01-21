@@ -1,0 +1,26 @@
+
+@media (min-width: 768px) {
+	.navbar-nav>li>a {
+		padding-top: 15px;
+		padding-bottom: 15px;
+		margin-bottom: -1px;
+	}
+}
+a {
+	color: #2999bd;
+}
+.navbar-toggle .icon-bar {
+	background-color: #fff;
+}
+
+.img-brand {
+	width:300px; 
+	height:auto; 
+	margin-top:-20px;
+	padding-bottom: 0px;
+    pointer-events: none;
+}
+
+nav {
+	background-color:#93e1be
+}
