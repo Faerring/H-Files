@@ -1,0 +1,145 @@
+@font-face {
+	font-family:"Anton";
+	src:url("../Fonts/Anton/Anton.ttf");
+}
+@font-face {
+	font-family:"Merriweather Regular";
+	src:url("../Fonts/Merriweather/Merriweather-Regular.ttf");
+}
+
+[class*="col-"] {
+	background-color:#93e1be;
+	border: 1px solid black;
+	border-collapse: collapse;
+	line-height: 40px;
+	text-align: center;
+	font-family: Anton Regular;
+	color:#2999bd;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: Anton Regular!important;
+	color:#2999bd!important;
+}
+
+p {
+	font-family: Merriweather Regular;
+	color:#2999bd;
+}
+
+a {
+	font-family: Merriweather Regular;
+	color:#2999bd;
+}
+
+@media (min-width:1170px) {
+	#arbo .form-control {
+		width:23.5%!important;
+	}
+}
+
+@media (min-width: 1200px) {
+	.container {
+		width: 95%!important;
+	}
+	.col-lg-8 {
+		margin-top: -50px;
+	}
+}
+
+/* Nathan */
+@media (min-width: 768px) {
+	.navbar-nav>li>a {
+		padding-top: 15px;
+		padding-bottom: 15px;
+		margin-bottom: -1px;
+	}
+}
+a {
+	color: #2999bd;
+}
+.navbar-toggle .icon-bar {
+	background-color: #fff;
+}
+.img-brand {
+    width:300px; 
+    height:auto!important;
+    margin-top:-20px;
+    padding-bottom: 0px!important;
+    pointer-events: none;
+}
+.container{
+	margin-top:100px;
+}
+nav {
+	background-color:#93e1be;
+}
+@media (min-width: 1200px) {
+	#login-colL {
+		margin-left:6.25%;
+	}
+	#login-colR {
+		margin-left:4.1666666675%;
+	}
+}
+.loginTitle {
+	border: solid 2px;
+	margin-left:10px;
+	margin-right:10px;
+	padding:4px;
+}
+.logindiv {
+	min-height:60vh !important;
+}
+.loginText {
+	padding-left:10%;
+	padding-right:10%;
+}
+
+@media (min-width: 768px) {
+.loginText {
+	  position: absolute;
+  top: 50%; /* poussé de la moitié de hauteur du référent */
+  transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
+  }
+}
+#login-form form {
+    padding: 10%;
+}
+#login-form input {
+	text-align: center;
+}
+
+#login-form .btnSubmit {
+    font-weight: 600;
+    color: #fff;
+    background-color: #0062cc;
+}
+.btnSubmit {
+    width: 50%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+}
+input {
+    display: block;
+    background-color: #3A3A4B;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: text;
+}
+.img-login {
+    width:60%; 
+    height:auto!important;
+    pointer-events: none;
+    margin-top:10%;
+}

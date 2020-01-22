@@ -23,7 +23,7 @@ function navbarAdmin() {
 
 function navGenTop() {
 	echo '
-		<nav class="navbar navbar-fixed-top">
+		<nav class="navbar navbar-fixed-top" id="navbar">
 		  <div class="container-fluid">
 			<div class="navbar-header">
 			  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -68,21 +68,3 @@ function viewNavBar(){
 	navGenBottom();
 }
 ?>
-<html>
-	<head>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta charset="UTF-8" lang="fr">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>H-Files</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        <link rel="shortcut icon" href="https://www.aphp.fr/sites/default/files/favico.png" type="image/png" />
-        <link rel="stylesheet" type="text/css" href="../CSS/nathan_style.css"/>
-	</head>
-	<body>
-		<?php 
-			viewNavBar();
-		?>
-	</body>
-</html>
