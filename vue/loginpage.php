@@ -1,6 +1,6 @@
 
 <?php
-include("SqueletteDePage.php");
+require("SqueletteDePage.php");
 debSquelette();
 ?>
 <div class="row">
@@ -18,12 +18,16 @@ debSquelette();
 		</div>
 		<img class="img-login" typeof="foaf:Image" src="../img/aphp-logo-blue.png">
 		<div class="row" id="login-form">
-			<form>
+			<form method="post" action="../controleur/loginpage.php">
 				<div class="form-group">
 					<input type="text" class="form-control" placeholder="Identifiant" name="IDWeb" size="40" required="">
                 </div>
 				<div class="form-group">
 					<input type="password" class="form-control" placeholder="Mot de passe" name="mdp" size="40" required="">
+					<a href="../vue/mdpoublie.php"><p>Mot de passe oublié ?</p></a>
+                </div>
+				<div class="form-group" id="formSubmit">
+					<input name="submit" class="btnSubmit" type="submit" value="Se connecter">
                 </div>
 			</form>
 		</div>	

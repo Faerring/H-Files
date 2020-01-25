@@ -1,6 +1,6 @@
 <?php
 /*require('connexionBDD.php');*/
-require('modele/modele_loginpage.php');
-
-require('vue/vue_loginpage.php');
+require('../modele/loginpage.php');
+connexion();
+require('../vue/loginpage.php');
 ?>

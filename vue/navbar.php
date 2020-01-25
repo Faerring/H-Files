@@ -8,7 +8,6 @@ function active($current_page){
 function navbarMed() {
 	echo '
 					<li class="'.active("profil.php").'"><a href="../controleur/profil.php">Profil</a></li>
-					<li class="'.active("agenda.php").'"><a href="../controleur/agenda.php">Agenda</a></li>
 					<li class="'.active("dmp.php").'"><a href="../controleur/dmp.php">Patients</a></li>
 					<li class="'.active("contact.php").'"><a href="../controleur/contact.php">Qui sommes nous ?</a></li>
 	';
@@ -39,15 +38,30 @@ function navGenTop() {
 }
 
 function navGenBottom() {
-	echo '
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-				  <li><a href="profil.php"><span class="glyphicon glyphicon-user"></span> D.SAUCET Nathan</a></li>
-				</ul>
-			</div>
-		  </div>
-		</nav>
-	';
+	if(isset($_SESSION['user'])) {
+		echo '
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+					  <li><a href="profil.php"><span class="glyphicon glyphicon-user"></span> '.getNom().' '.getPrenom().'</a></li>
+					  <li><a href="../vue/loginpage.php?dc=true"><span class="glyphicon glyphicon-log-in"></span> Se déconnecter</a></li>
+					</ul>
+				</div>
+			  </div>
+			</nav>
+		';
+	}
+	else {
+		echo '
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+					  <li><a href="profil.php"><span class="glyphicon glyphicon-user"></span> Inconnu(e)</a></li>
+					  <li><a href="../vue/loginpage.php?dc=true"><span class="glyphicon glyphicon-log-in"></span> Se déconnecter</a></li>
+					</ul>
+				</div>
+			  </div>
+			</nav>
+		';
+	}
 }
 function viewNavBar(){
 	navGenTop();
