@@ -1,9 +1,9 @@
 <?php
-class Utilisateur($id)
+class Utilisateur
 {
   private $IDPerso;
   private $IDNoeud;
-  private $IDWeb = $id;
+  private $IDWeb;
   private $lastname;
   private $firstname;
   private $profession;
@@ -15,6 +15,9 @@ class Utilisateur($id)
 
   private function initializeUser()
   {
+    if ($IDWeb == null ){
+      return "IDWeb n'a pas été initialisé";
+    }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
     $sql = "SELECT * FROM 'personnel' WHERE 'IDWeb' =$IDWeb ";
 
@@ -72,7 +75,9 @@ class Utilisateur($id)
   }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+  private function setIDWeb($newID){
+    $this->IDWeb = $newID;
+  }
 
   private function setMail($newMail)
   {
