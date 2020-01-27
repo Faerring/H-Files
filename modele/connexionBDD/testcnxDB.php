@@ -1,11 +1,6 @@
 <?php
   include("connexion.php");
-
-  $host="sqletud.u-pem.fr";
-  $user="lschneid";
-  $pwd="cN9zRX";
-
-  $db="lschneid_db";
+  include('parametres.php');
 
   $dbh = connectToDB($host, $user, $pwd, $db);
   if ($dbh != false) {
@@ -25,8 +20,8 @@
 <body>
   <?php
     if (isset($req)) {
-      while ($ligne=$req->fetch()) {
-        echo "<br>id : ".$ligne[0].", nom : ".$ligne[1];
+      while ($row=$req->fetch()) {
+        echo "<br>id : ".$row[0].", nom : ".$row[1];
       }
     }
 
