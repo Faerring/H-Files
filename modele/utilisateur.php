@@ -1,25 +1,25 @@
 <?php
 class Utilisateur
 {
-  private $IDPerso;
-  private $IDNoeud;
-  private $IDWeb;
-  private $lastname;
-  private $firstname;
-  private $profession;
-  private $mail;
-  private $tel;
-  private $img;
-  private $pwd;
+  private $IDPerso = "";
+  private $IDNoeud = "";
+  private $IDWeb = "";
+  private $lastname = "";
+  private $firstname = "";
+  private $profession = "";
+  private $mail = "";
+  private $tel = "";
+  private $img = "";
+  private $pwd = "";
 
 
-  private function initializeUser()
+  public function initializeUser()
   {
-    if ($IDWeb == null ){
+    if ($IDWeb == "" ){
       return "IDWeb n'a pas été initialisé";
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
-    $sql = "SELECT * FROM 'personnel' WHERE 'IDWeb' =$IDWeb ";
+    $sql = "SELECT * FROM 'personnel' WHERE 'IDWeb' =".$IDWeb ;
 
     if ($result = $connexion->query($sql))
     {
@@ -43,46 +43,46 @@ class Utilisateur
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 // GETTERS
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-  private function getID(){
+  public function getID(){
     return $this->IDPerso;
   }
-  private function getProfession(){
+  public function getProfession(){
     return $this->profession;
   }
-  private function getIDWeb(){
+  public function getIDWeb(){
     return $this->IDWeb;
   }
-  private function getMdp(){
+  public function getMdp(){
     return $this->pwd;
   }
-  private function getNom(){
+  public function getNom(){
     return $this->lastname;
   }
-  private function getPrenom(){
+  public function getPrenom(){
     return $this->firstname;
   }
-  private function getTel(){
+  public function getTel(){
     return $this->tel;
   }
-  private function getMail(){
+  public function getMail(){
     return $this->mail;
   }
-  private function getIDNoeud(){
+  public function getIDNoeud(){
     return $this->IDNoeud;
   }
-  private function getImage(){
+  public function getImage(){
     return $this->img;
   }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-  private function setIDWeb($newID){
+  public function setIDWeb($newID){
     $this->IDWeb = $newID;
   }
 
-  private function setMail($newMail)
+  public function setMail($newMail)
   {
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
-    $sql = "UPDATE 'personnel' SET 'mail' = $newMail WHERE 'IDPerso' =$id ";
+    $sql = "UPDATE 'personnel' SET 'mail' = ".$newMail."WHERE 'IDPerso' =".$id;
 
     $connexion->exec($sql);
     $this->mail = $newMail;
@@ -92,14 +92,14 @@ class Utilisateur
 
 
 
-  private function setMobilePhone($newTel)
+  public function setMobilePhone($newTel)
   {
     if (strlen($newTel) != 10)
     {
       return "Le numéro de téléphone doit contenir 10 caractères";
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
-    $sql = "UPDATE 'personnel' SET 'tel' = $newTel WHERE 'IDPerso' =$id ";
+    $sql = "UPDATE 'personnel' SET 'tel' = ".$newTel."WHERE 'IDPerso' =".$id;
 
     $connexion->exec($sql);
     $this->tel = $newTel;
