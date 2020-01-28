@@ -12,6 +12,14 @@ function navbarMed() {
 					<li class="'.active("contact.php").'"><a href="../controleur/contact.php">Qui sommes nous ?</a></li>
 	';
 }
+function navbarInf() {
+	echo '
+					<li class="'.active("profil.php").'"><a href="../controleur/profil.php">Profil</a></li>
+					<li class="'.active("personnel.php").'"><a href="../controleur/dmp.php">Personnels</a></li>
+					<li class="'.active("entreesortie.php").'"><a href="../controleur/entreesortie.php">Entrées/Sorties</a></li>
+					<li class="'.active("contact.php").'"><a href="../controleur/contact.php">Qui sommes nous ?</a></li>
+	';
+}
 function navbarAdmin() {
 	echo '
 					<li class="'.active("profil.php").'"><a href="../controleur/profil.php">Profil</a></li>
@@ -19,7 +27,12 @@ function navbarAdmin() {
 					<li class="'.active("noeuds.php").'"><a href="../controleur/noeuds.php">Noeuds</a></li>
 	';
 }
-
+function navbarDefault() {
+	echo '
+					<li class="'.active("profil.php").'"><a href="../controleur/profil.php">Profil</a></li>
+					<li class="'.active("contact.php").'"><a href="../controleur/contact.php">Qui sommes nous ?</a></li>
+	';
+}
 function navGenTop() {
 	echo '
 		<nav class="navbar navbar-fixed-top" id="navbar">
@@ -71,6 +84,12 @@ function viewNavBar(){
 		}
 		if($_SESSION['user']->getProfession() == "Medecin") {
 			navbarMed();
+		}
+		if($_SESSION['user']->getProfession() == "Infirmier") {
+			navbarInf();
+		}
+		else {
+			navbarDefault();
 		}
 	}
 	else {
