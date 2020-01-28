@@ -1,6 +1,6 @@
 <?php
 function disconnect() {
-	if(isset$_GET['dc']) {
+	if(isset($_GET['dc'])) {
 		session_start();
 
 		session_unset();
@@ -18,7 +18,9 @@ function isConnected() {
 }
 function connexion() {
 	$test = false;
-	require('connexionBDD.php');
+	require("../modele/connexion.php");
+	require("../modele/parametres.php");
+	$dbh = connectToDB($host, $user, $pwd, $db);
 	if(isset($_POST['submit']) && (isConnectedToDB() == true) && ((isset($_POST['IDWeb']) && $_POST['IDWeb']!="")  && (isset($_POST['mdp']) && $_POST['mdp']!=""))) {
 		$y = "SELECT IDWeb, mdp FROM personnel";
 		$result = $dbh->query($y);
@@ -32,8 +34,8 @@ function connexion() {
 				if(isset($_SESSION['IDWeb'])) {
 					require('Encapsulation.php');
 					$execRequest = new execRequest();
-					require('user.php');
-					$user = new user($IDWeb);	
+					require('utilisateur.php');
+					$user = new Utilisateur($IDWeb);	
 					
 					$_SESSION['execRequest'] = $execRequest;
 					$_SESSION['user'] = $user;

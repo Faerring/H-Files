@@ -1,9 +1,6 @@
 <?php
   function connectToDB($host, $user, $pwd, $db) {
     try{
-      echo($host."<br>");
-      echo($db."<br>");
-      echo($user."<br>");
       $con='mysql:host='.$host.';dbname='.$db;
       $dbh = new PDO($con,$user,$pwd,array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
       return $dbh;
