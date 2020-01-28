@@ -1,8 +1,7 @@
 <?php
-  include("connexion.php");
-  include('parametres.php');
+  require("connexion.php");
 
-  $dbh = connectToDB($host, $user, $pwd, $db);
+
   if ($dbh != false) {
     echo ("<br>Successful connexion!");
     $req = $dbh -> query("SELECT ID_PROF, nom_prof FROM professeur;");

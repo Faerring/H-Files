@@ -1,4 +1,5 @@
 <?php
+require('parametres.php');
   function connectToDB($host, $user, $pwd, $db) {
     try{
       $con='mysql:host='.$host.';dbname='.$db;
@@ -11,4 +12,5 @@
     }
   }
 
+  global $dbh = connectToDB($host, $user, $pwd, $db);
 ?>

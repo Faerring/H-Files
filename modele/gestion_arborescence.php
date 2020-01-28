@@ -1,7 +1,5 @@
 <?php
-include("connexion.php");
-include('parametres.php');
-global $dbh = connectToDB($host, $user, $pwd, $db);
+require("connexion.php");
 
 function isParent($parentNode, $childNode) {
   if ($dbh != false) {
