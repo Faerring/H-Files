@@ -7,7 +7,7 @@
 	src:url("../Fonts/Merriweather/Merriweather-Regular.ttf");
 }
 [class*="col-"] {
-	background-color:#3e97fa8f;
+	background-color:#93C5FC;
 	border: 1px solid black;
 	border-collapse: collapse;
 	line-height: 40px;
@@ -71,7 +71,7 @@ a {
 	margin-top:100px;
 }
 nav {
-	background-color:#3e97fa8f;
+	background-color:#93C5FC;
 }
 @media (min-width: 1200px) {
 	#login-colL {

@@ -18,9 +18,6 @@ function isConnected() {
 }
 function connexion() {
 	$test = false;
-	require("../modele/connexion.php");
-	require("../modele/parametres.php");
-	$dbh = connectToDB($host, $user, $pwd, $db);
 	if(isset($_POST['submit']) && (isConnectedToDB() == true) && ((isset($_POST['IDWeb']) && $_POST['IDWeb']!="")  && (isset($_POST['mdp']) && $_POST['mdp']!=""))) {
 		$y = "SELECT IDWeb, mdp FROM personnel";
 		$result = $dbh->query($y);

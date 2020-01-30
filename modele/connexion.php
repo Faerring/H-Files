@@ -12,5 +12,5 @@ require('parametres.php');
     }
   }
 
-  global $dbh = connectToDB($host, $user, $pwd, $db);
+  $dbh = connectToDB($host, $user, $pwd, $db);
 ?>
