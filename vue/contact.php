@@ -2,6 +2,7 @@
 require("SqueletteDePage.php");
 debSquelette();
 ?>
+
 				<div class="row row-eq-height">
 					<div class="col-12 col-lg-5 logindiv" id="login-colL">
 						<div class="row"> 
@@ -13,22 +14,18 @@ debSquelette();
 					</div>
 					<div class="col-12 col-lg-5 col-lg-offset-2 logindiv" id="login-colR">
 						<div class="row">
-							<h2 class="loginTitle">SE CONNECTER</h2>
+							<h2 class="loginTitle">L'équipe BIO INC</h2>
 						</div>
-						<img class="img-login" typeof="foaf:Image" src="../img/aphp-logo-blue.png">
-						<div class="row" id="login-form">
-							<form method="post" action="../controleur/loginpage.php">
-								<div class="form-group">
-									<input type="text" class="form-control" placeholder="Identifiant" name="IDWeb" size="40" required="">
-								</div>
-								<div class="form-group">
-									<input type="password" class="form-control" placeholder="Mot de passe" name="mdp" size="40" required="">
-									<a href="../vue/mdpoublie.php"><p>Mot de passe oublié ?</p></a>
-								</div>
-								<div class="form-group" id="formSubmit">
-									<input name="submit" class="btnSubmit" type="submit" value="Se connecter">
-								</div>
-							</form>
+						<img class="logo_bioinc" typeof="foaf:Image" src="../img/logo_bioinc.png">
+						<div class="row team">
+							<div class="row team_row">
+								<div class="col-12 col-lg-4 col-md-6"><img typeof="foaf:Image" src="../img/Nathan.jpg"><p>Nathan</p></div>
+								<div class="col-12 col-lg-4 col-md-6"><img typeof="foaf:Image" src="../img/Nathan.jpg"><p>Nathan</p></div>
+								<div class="col-12 col-lg-4 col-md-6"><img typeof="foaf:Image" src="../img/Nathan.jpg"><p>Nathan</p></div>
+								<div class="col-12 col-lg-4 col-md-6"><img typeof="foaf:Image" src="../img/Nathan.jpg"><p>Nathan</p></div>
+								<div class="col-12 col-lg-4 col-md-6"><img typeof="foaf:Image" src="../img/Nathan.jpg"><p>Nathan</p></div>
+								<div class="col-12 col-lg-4 col-md-6"><img typeof="foaf:Image" src="../img/Nathan.jpg"><p>Nathan</p></div>
+							</div>
 						</div>	
 					</div>
 				</div>

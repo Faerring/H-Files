@@ -2,7 +2,7 @@
 function active($current_page){
   $url = basename($_SERVER['PHP_SELF']);
   if($current_page == $url){
-      echo 'active'; //class name in css
+      return 'active'; //class name in css
   }
 }
 function navbarMed() {

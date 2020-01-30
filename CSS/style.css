@@ -15,7 +15,6 @@
 	font-family: Anton Regular;
 	color:black;
 }
-
 h1, h2, h3, h4, h5, h6 {
 	font-family: Anton Regular!important;
 	color:black!important;
@@ -99,8 +98,6 @@ nav {
 @media (min-width: 768px) {
 .loginText {
 	  position: absolute;
-  top: 50%; /* poussé de la moitié de hauteur du référent */
-  transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
   }
 }
 #login-form form {
@@ -161,4 +158,41 @@ font-size:16px;
 }
 img {
     user-select: none!important;
+}
+@media (min-width: 1200px) {
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+}
+.active, .active a {
+	background-color:white;
+}
+.logo_bioinc {
+width:40%; 
+}
+.team_row div {
+	border: none;
+	line-height: 1.42857143;
+	padding-right: 0px;
+    padding-left:  0px;
+}
+.team_row {
+    margin-right:  0px!important;
+    margin-left:   0px!important;
+}
+@media screen (min-width: 992px) {
+.col-md-6 img {
+width:75%;
+}
+}
+
+.col-md-6 img {
+    max-width: -webkit-fill-available;
+    height: auto;
+}
+.team {
+margin-top:20px;
 }
