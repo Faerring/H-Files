@@ -18,7 +18,7 @@ function debSquelette() { ?>
 		</head>
 		<body>
 			<?php viewNavBar(); ?>
-			<div class="container">
+	<div class="container">
 <?php
 }
 
