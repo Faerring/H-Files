@@ -11,7 +11,6 @@
 	border: 1px solid black;
 	border-collapse: collapse;
 	line-height: 40px;
-	text-align: center;
 	font-family: Anton Regular;
 	color:black;
 }
@@ -197,7 +196,7 @@ div.active {
     border: 1px solid black;
 }
 
-#infos, #add, #modify {
+.infos, .infos2, .infos3, .infos4, .photo, #add, #modify {
 	border:none!important;
 }
 
