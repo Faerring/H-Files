@@ -196,3 +196,25 @@ width:75%;
 .team {
 margin-top:20px;
 }
+
+div.active {
+	background-color:#93C5FC;
+}
+
+/* Julien */
+.tabES {
+    border-collapse: collapse;
+    width:500px
+}
+
+.tabES td {
+    border: 1px solid black;
+}
+
+#infos, #add, #modify {
+	border:none!important;
+}
+
+.labES { 
+	width:250px; 
+}
