@@ -2,7 +2,7 @@
 include("squeletteDePage.php");
 debSquelette();
 ?>
-<div class="row">
+<div id="arbo" class="row">
 	<div class="form-group">
 		<div class="input-group">
 			<div class="input-group-addon"><i class="fa fa-search"></i></div>
@@ -21,7 +21,7 @@ debSquelette();
 		<div class="tab-content">
 			<div id="menu1" class="tab-pane fade in active">
 				<h3>Entrée patients</h3>
-				<table>
+				<table class="tabES">
 					<tr>
 						<td>Nom</td>
 						<td>Prénom</td>
@@ -29,7 +29,7 @@ debSquelette();
 					</tr>
 				</table>
 				<h3>Sortie patients</h3>
-				<table>
+				<table class="tabES">
 					<tr>
 						<td>Nom</td>
 						<td>Prénom</td>
@@ -43,15 +43,15 @@ debSquelette();
 					<h3>Ajouter une nouvelle affectation :</h3>
 					<form method="POST" action="entrees_sorties.php">
 						<p>
-							<label>Nom du patient :</label>
+							<label class="labES">Nom du patient :</label>
 							<input type="text" name="nom"/>
 						</p>
 						<p>
-							<label>Prénom du patient :</label>
+							<label class="labES">Prénom du patient :</label>
 							<input type="text" name="prenom"/>
 						</p>
 						<p>
-							<label>Date d'affectation :</label>
+							<label class="labES">Date d'affectation :</label>
 							<input type="date" name="date"/>
 						</p>
 						<input type="submit" name="confirmerA" value="Confirmer">
@@ -61,15 +61,15 @@ debSquelette();
 					<h3>Modifier une affectation :</h3>
 					<form method="POST" action="entrees_sorties.php">
 						<p>
-							<label>Nom du patient :</label>
+							<label class="labES">Nom du patient :</label>
 							<input type="text" name="nom"/>
 						</p>
 						<p>
-							<label>Prénom du patient :</label>
+							<label class="labES">Prénom du patient :</label>
 							<input type="text" name="prenom"/>
 						</p>
 						<p>
-							<label>Date de fin d'affectation :</label>
+							<label class="labES">Date de fin d'affectation :</label>
 							<input type="date" name="date"/>
 						</p>
 						<input type="submit" name="confirmerA" value="Confirmer">
