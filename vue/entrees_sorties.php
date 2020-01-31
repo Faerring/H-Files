@@ -72,7 +72,7 @@ debSquelette();
 							<label class="labES">Date de fin d'affectation :</label>
 							<input type="date" name="date"/>
 						</p>
-						<input type="submit" name="confirmerA" value="Confirmer">
+						<input type="submit" name="confirmerM" value="Confirmer">
 					</form>
 				</div>
 			</div>
