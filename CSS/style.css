@@ -167,6 +167,10 @@ width:40%;
 	padding-right: 0px;
     padding-left:  0px;
 }
+.team_row img {
+max-width:200px;
+max-height:200px;
+}
 .team_row {
     margin-right:  0px!important;
     margin-left:   0px!important;
