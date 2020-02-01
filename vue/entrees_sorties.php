@@ -27,6 +27,20 @@ debSquelette();
 						<td>Prénom</td>
 						<td>Date</td>
 					</tr>
+					<?php
+					while($ligne=$entrees->fetch()) {
+						echo "<tr>";
+						echo "<td>";
+						echo $ligne[0];
+						echo "</td>";
+						echo "<td>";
+						echo $ligne[1];
+						echo "</td>";
+						echo "<td>";
+						echo $ligne[2];
+						echo "</td>";
+						echo "</tr>";
+					}?>
 				</table>
 				<h3>Sortie patients</h3>
 				<table class="tabES">
@@ -35,6 +49,20 @@ debSquelette();
 						<td>Prénom</td>
 						<td>Date</td>
 					</tr>
+					<?php
+					while($ligne2=$sorties->fetch()) {
+						echo "<tr>";
+						echo "<td>";
+						echo $ligne2[0];
+						echo "</td>";
+						echo "<td>";
+						echo $ligne2[1];
+						echo "</td>";
+						echo "<td>";
+						echo $ligne2[2];
+						echo "</td>";
+						echo "</tr>";
+					}?>
 				</table>
 			</div>
 			

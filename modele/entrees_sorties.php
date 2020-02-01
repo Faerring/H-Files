@@ -1,12 +1,15 @@
 <?php
+require('connexion.php');
 function getEntrees() {
-	$x = "SELECT dmp_patient.nom, dmp_patient.prenom, dateAffec FROM personnel, dmp_patient NATURAL JOIN hospitalisation NATURAL JOIN affectation WHERE dmp_patient.IDNoeud = personnel.IDNoeud AND personnel.nom LIKE 'Pical'";
+	$x = 'SELECT DISTINCT dmp_patient.nom, dmp_patient.prenom, DateAffec FROM personnel, dmp_patient NATURAL JOIN hospitalisation NATURAL JOIN affectation 
+WHERE (dmp_patient.IDNoeud = personnel.IDNoeud) AND (personnel.nom LIKE "Pical") AND (affectation.DateAffec IN (SELECT DateAffec FROM affectation WHERE DateAffec >= (SELECT DATE_SUB(NOW(), INTERVAL 7 DAY))))';
 	$result = $dbh->query($x);
 	return $result;
 }
 
 function getSorties() {
-	$x = "SELECT dmp_patient.nom, dmp_patient.prenom, dateFinAffec FROM personnel, dmp_patient NATURAL JOIN hospitalisation NATURAL JOIN affectation WHERE dmp_patient.IDNoeud = personnel.IDNoeud AND personnel.nom LIKE 'Pical'";
+	$x = 'SELECT DISTINCT dmp_patient.nom, dmp_patient.prenom, DateFinAffec FROM personnel, dmp_patient NATURAL JOIN hospitalisation NATURAL JOIN affectation 
+WHERE (dmp_patient.IDNoeud = personnel.IDNoeud) AND (personnel.nom LIKE "Pical") AND (affectation.DateFinAffec IN (SELECT DateFinAffec FROM affectation WHERE DateFinAffec >= (SELECT DATE_SUB(NOW(), INTERVAL 7 DAY))))';
 	$result = $dbh->query($x);
 	return $result;
 }
@@ -33,7 +36,7 @@ function updateAffectattion(){
 		
 		$x = 'SELECT IDAffec FROM affectation NATURAL JOIN hospitalisation NATURAL JOIN dmp_patient WHERE UUID = (SELECT UUID from dmp_patient WHERE nom LIKE '.$nom.' AND prenom LIKE '.$prenom.') AND DateFinAffec IS NULL';
 		$result = $dbh->query($x);
-		$y = 'UPDATE affectation SET DateFinAffec = "2020-01-31" WHERE IDAffec = '.$result;
+		$y = 'UPDATE affectation SET DateFinAffec = '.$date.' WHERE IDAffec = '.$result;
 		$result2 = $dbh->query($y);
 		if ($result2->rowCount() != 0)
 			return $result2;
