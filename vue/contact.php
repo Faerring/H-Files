@@ -19,11 +19,11 @@ debSquelette();
 						<img class="logo_bioinc" typeof="foaf:Image" src="../img/logo_bioinc.png">
 						<div class="row team">
 							<div class="row team_row">
+								<div class="col-12 col-lg-4 col-md-6"><img typeof="foaf:Image" src="../img/Leo.jpg"><p>Leo</p></div>
 								<div class="col-12 col-lg-4 col-md-6"><img typeof="foaf:Image" src="../img/Nathan.jpg"><p>Nathan</p></div>
-								<div class="col-12 col-lg-4 col-md-6"><img typeof="foaf:Image" src="../img/Nathan.jpg"><p>Nathan</p></div>
-								<div class="col-12 col-lg-4 col-md-6"><img typeof="foaf:Image" src="../img/Nathan.jpg"><p>Nathan</p></div>
-								<div class="col-12 col-lg-4 col-md-6"><img typeof="foaf:Image" src="../img/Nathan.jpg"><p>Nathan</p></div>
-								<div class="col-12 col-lg-4 col-md-6"><img typeof="foaf:Image" src="../img/Nathan.jpg"><p>Nathan</p></div>
+								<div class="col-12 col-lg-4 col-md-6"><img typeof="foaf:Image" src="../img/Céline.jpg"><p>Céline</p></div>
+								<div class="col-12 col-lg-4 col-md-6"><img typeof="foaf:Image" src="../img/Loris.jpg"><p>Loris</p></div>
+								<div class="col-12 col-lg-4 col-md-6"><img typeof="foaf:Image" src="../img/Julien.jpg"><p>Julien</p></div>
 								<div class="col-12 col-lg-4 col-md-6"><img typeof="foaf:Image" src="../img/Nathan.jpg"><p>Nathan</p></div>
 							</div>
 						</div>	
