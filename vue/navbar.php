@@ -15,7 +15,7 @@ function navbarMed() {
 function navbarInf() {
 	echo '
 					<li class="'.active("profil.php").'"><a href="../controleur/profil.php">Profil</a></li>
-					<li class="'.active("personnel.php").'"><a href="../controleur/dmp.php">Personnels</a></li>
+					<li class="'.active("dmp.php").'"><a href="../controleur/dmp.php">Patients</a></li>
 					<li class="'.active("entreesortie.php").'"><a href="../controleur/entreesortie.php">Entrées/Sorties</a></li>
 					<li class="'.active("contact.php").'"><a href="../controleur/contact.php">Qui sommes nous ?</a></li>
 	';
@@ -25,6 +25,14 @@ function navbarAdmin() {
 					<li class="'.active("profil.php").'"><a href="../controleur/profil.php">Profil</a></li>
 					<li class="'.active("personnel.php").'"><a href="../controleur/personnel.php">Personnels</a></li>
 					<li class="'.active("noeuds.php").'"><a href="../controleur/noeuds.php">Noeuds</a></li>
+					<li class="'.active("contact.php").'"><a href="../controleur/contact.php">Qui sommes nous ?</a></li>
+	';
+}
+function navbarSec() {
+	echo '
+					<li class="'.active("profil.php").'"><a href="../controleur/profil.php">Profil</a></li>
+					<li class="'.active("enregistrement.php").'"><a href="../controleur/enregistrement.php">Enregistrement Patients</a></li>
+					<li class="'.active("contact.php").'"><a href="../controleur/contact.php">Qui sommes nous ?</a></li>
 	';
 }
 function navbarDefault() {
@@ -87,6 +95,9 @@ function viewNavBar(){
 		}
 		if($_SESSION['user']->getProfession() == "Infirmier") {
 			navbarInf();
+		}
+		if($_SESSION['user']->getProfession() == "Secrétaire") {
+			navbarSec();
 		}
 		else {
 			navbarDefault();
