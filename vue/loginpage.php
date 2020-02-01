@@ -2,7 +2,7 @@
 require("SqueletteDePage.php");
 debSquelette();
 ?>
-				<div class="row row-eq-height">
+				<div class="row row-eq-height align_row">
 					<div class="col-12 col-lg-5 logindiv" id="login-colL">
 						<div class="row"> 
 							<h2 class="loginTitle">Le projet H-Files, qu'est ce que c'est ?</h2>
