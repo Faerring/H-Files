@@ -19,6 +19,22 @@ h1, h2, h3, h4, h5, h6 {
 	color:black!important;
 }
 
+#newPWDcontainer {
+	width: 100%;
+	text-align: center;
+	vertical-align: middle;
+}
+
+#newPasswdForm {
+	padding-left: 40px;
+	padding-right: 40px;
+	border: 1px solid black;
+	background-color: #93C5FC;
+	display: inline-block;
+  cursor: pointer;
+  width: 600px;
+}
+
 p {
 	font-family: Merriweather Regular;
 	color:black;
@@ -62,7 +78,7 @@ a {
 	background-color: #fff;
 }
 .img-brand {
-    width:300px; 
+    width:300px;
     height:auto!important;
     margin-top:-20px;
     padding-bottom: 0px!important;
@@ -133,7 +149,7 @@ nav {
 }
 
 .img-login {
-    width:60%; 
+    width:60%;
     height:auto!important;
     pointer-events: none;
     margin-top:10%;
@@ -159,7 +175,7 @@ img {
 	background-color:white;
 }
 .logo_bioinc {
-width:40%; 
+width:40%;
 }
 .team_row div {
 	border: none;
@@ -207,8 +223,8 @@ div.active {
 	border:none!important;
 }
 
-.labES { 
-	width:250px; 
+.labES {
+	width:250px;
 }
 
 
@@ -216,11 +232,11 @@ div.active {
 .img_patient{
 	width: 150px;
 	margin-top: 50px;
-	
+
 
 }
 
 .male_patient{
 	width: 20px;
-	
+
 }
