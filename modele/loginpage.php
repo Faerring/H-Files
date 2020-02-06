@@ -25,7 +25,7 @@ function connexion() {
 		$mdp = $_POST('mdp');
 		session_start();
 		while($ligne=$result->fetch()) {
-			if (($login == $ligne[0]) && ($mdp == $ligne[1])){
+			if (($IDWeb == $ligne[0]) && ($mdp == $ligne[1])){
 				$_SESSION['IDWeb'] = $IDWeb;
 				$_SESSION['mdp'] = $mdp;
 				if(isset($_SESSION['IDWeb'])) {
