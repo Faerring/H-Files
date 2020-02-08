@@ -23,8 +23,10 @@ function addAffectattion(){
 		$x = 'INSERT INTO affectation VALUES("",NULL,'.$date.',(SELECT IDNoeud FROM personnel WHERE nom LIKE "Pical"),(SELECT IDHosp FROM hospitalisation NATURAL JOIN dmp_patient WHERE nom LIKE '.$nom.' AND prenom LIKE '.$prenom.'))';
 		$result = $dbh->query($x);
 		if ($result->rowCount() != 0)
+			echo "L'affectation a bien été ajoutée";
 			return $result;
 		}
+		echo "L'affectation n'a pas été ajoutée";
 		return False;
 }
 
@@ -39,8 +41,10 @@ function updateAffectattion(){
 		$y = 'UPDATE affectation SET DateFinAffec = '.$date.' WHERE IDAffec = '.$result;
 		$result2 = $dbh->query($y);
 		if ($result2->rowCount() != 0)
+			echo "L'affectation a été modifiée";
 			return $result2;
 		}
+		echo "L'affectation n'a pas été modifiée";
 		return False;
 }
 ?>
