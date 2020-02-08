@@ -6,19 +6,15 @@
     }
 
     public function viewPData($patientID){
-        if (isset($_POST['IDHosp']) && ($_POST['IDHosp'] == $patientID) && ($_POST['IDHosp'] != '')){
             $y = "SELECT * FROM dmp_patient WHERE UUID LIKE ".$patientID;
             $donneesP = $dbh->query($y);
             return $donneesP;
-        }
     }
 
     function getAllergies($patientID){
-        if (isset($_POST['IDHosp']) && ($_POST['IDHosp'] == $patientID) && ($_POST['IDHosp'] != '')){
-            $y = "SELECT * FROM antecedent WHERE UUID LIKE ".$patientID;
-            $antecedent = $dbh->query($y);
-            return $antecedent;
-        }
+        $y = "SELECT * FROM dmp_patient WHERE UUID LIKE ".$patientID;
+        $donneesP = $dbh->query($y);
+        return $donneesP;
     }
     
     function getHospitalisation($patientID) {
