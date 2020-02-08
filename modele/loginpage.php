@@ -46,8 +46,8 @@ function connexion() {
 		return isConnected();
 	}
 	if(isset($_POST['submit'])) {
-		echo 'window.alert("Identifiant ou mot de passe incorrect")';
-		header("refresh:1;url=../controleur/loginpage.php"); 
+        echo "<script language='javascript'>alert('Identifiant ou mot de passe incorrect');</script>";
+        header("refresh:0;url=../controleur/loginpage.php"); 
 	}
 	return false;
 }

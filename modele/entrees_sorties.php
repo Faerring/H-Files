@@ -1,15 +1,21 @@
 <?php
 require('connexion.php');
+require('utilisateur.php');
+$noeud = $_SESSION['user']->getIDNoeud();
+$nomPers = $_SESSION['user']->getNom();
+
 function getEntrees() {
-	$x = 'SELECT DISTINCT dmp_patient.nom, dmp_patient.prenom, DateAffec FROM personnel, dmp_patient NATURAL JOIN hospitalisation NATURAL JOIN affectation 
-WHERE (dmp_patient.IDNoeud = personnel.IDNoeud) AND (personnel.nom LIKE "Pical") AND (affectation.DateAffec IN (SELECT DateAffec FROM affectation WHERE DateAffec >= (SELECT DATE_SUB(NOW(), INTERVAL 7 DAY))))';
+	$x = 'SELECT DISTINCT dmp_patient.nom, dmp_patient.prenom, DateAffec, medecintraitant.nom FROM personnel, medecintraitant, dmp_patient NATURAL JOIN hospitalisation NATURAL JOIN affectation 
+WHERE (dmp_patient.IDNoeud = '.$noeud.') AND (personnel.nom = '.$nomPers.') AND (affectation.DateAffec IN (SELECT DateAffec FROM affectation WHERE DateAffec >= (SELECT DATE_SUB(NOW(), INTERVAL 7 DAY)))) 
+AND (medecintraitant.IDMedTraitant = dmp_patient.IDMedTraitant)';
 	$result = $dbh->query($x);
 	return $result;
 }
 
 function getSorties() {
-	$x = 'SELECT DISTINCT dmp_patient.nom, dmp_patient.prenom, DateFinAffec FROM personnel, dmp_patient NATURAL JOIN hospitalisation NATURAL JOIN affectation 
-WHERE (dmp_patient.IDNoeud = personnel.IDNoeud) AND (personnel.nom LIKE "Pical") AND (affectation.DateFinAffec IN (SELECT DateFinAffec FROM affectation WHERE DateFinAffec >= (SELECT DATE_SUB(NOW(), INTERVAL 7 DAY))))';
+	$x = 'SELECT DISTINCT dmp_patient.nom, dmp_patient.prenom, DateFinAffec, medecintraitant.nom FROM personnel, medecintraitant, dmp_patient NATURAL JOIN hospitalisation NATURAL JOIN affectation 
+WHERE (dmp_patient.IDNoeud = '.$noeud.') AND (personnel.nom '.$nomPers.') AND (affectation.DateFinAffec IN (SELECT DateFinAffec FROM affectation WHERE DateFinAffec >= (SELECT DATE_SUB(NOW(), INTERVAL 7 DAY))))
+AND (medecintraitant.IDMedTraitant = dmp_patient.IDMedTraitant)';
 	$result = $dbh->query($x);
 	return $result;
 }
@@ -20,7 +26,7 @@ function addAffectattion(){
 		$prenom = $_POST['prenom'];
 		$date = $_POST['date'];
 		
-		$x = 'INSERT INTO affectation VALUES("",NULL,'.$date.',(SELECT IDNoeud FROM personnel WHERE nom LIKE "Pical"),(SELECT IDHosp FROM hospitalisation NATURAL JOIN dmp_patient WHERE nom LIKE '.$nom.' AND prenom LIKE '.$prenom.'))';
+		$x = 'INSERT INTO affectation VALUES("",NULL,'.$date.',(SELECT IDNoeud FROM personnel WHERE nom = '.$nomPers.'),(SELECT IDHosp FROM hospitalisation NATURAL JOIN dmp_patient WHERE nom LIKE '.$nom.' AND prenom LIKE '.$prenom.'))';
 		$result = $dbh->query($x);
 		if ($result->rowCount() != 0)
 			echo "L'affectation a bien été ajoutée";

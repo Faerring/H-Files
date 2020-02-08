@@ -90,8 +90,60 @@ debSquelette();
                     </div>  
                 </div>
                 <div id="menu2" class="tab-pane fade">
-                    <h3>Menu 2</h3>
-                    <p>Some content.</p>
+                    <?php 
+                    if(!isset($_POST['hosp'])) {
+						unset($_POST['hosp']);
+                    ?>
+                    <h3>Hospitalisation</h3>
+                    <form action="../vue/consultation_patient.php" method="post">
+						<div class="row hosp">
+							<div class="col-lg-3 col-md-6"><p>test</p><button name="hosp" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
+							<div class="col-lg-3 col-md-6"><p>test</p><button name="hosp" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
+							<div class="col-lg-3 col-md-6"><p>test</p><button name="hosp" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
+							<div class="col-lg-3 col-md-6"><p>test</p><button name="hosp" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
+						</div>
+						<div class="row hosp">
+							<div class="col-lg-3 col-md-6"><p>test</p><button name="hosp" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
+							<div class="col-lg-3 col-md-6"><p>test</p><button name="hosp" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
+							<div class="col-lg-3 col-md-6"><p>test</p><button name="hosp" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
+							<div class="col-lg-3 col-md-6"><p>test</p><button name="hosp" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
+						</div>
+						<div class="row hosp">
+							<div class="col-lg-3 col-md-6"><p>test</p><button name="hosp" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
+							<div class="col-lg-3 col-md-6"><p>test</p><button name="hosp" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
+							<div class="col-lg-3 col-md-6"><p>test</p><button name="hosp" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
+							<div class="col-lg-3 col-md-6"><p>test</p><button name="hosp" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
+						</div>
+					</form>
+					<?php 	
+					}
+					else {
+						unset($_POST['hosp']);
+						?>
+                    <h3>Actes <a style="background-color:transparent; text-decoration:none" href="../vue/consultation_patient.php">&#8617;</a></h3>
+                    <form action="../vue/consultation_actes.php" method="post">
+						<div class="row hosp">
+							<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
+							<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
+							<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
+							<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
+						</div>
+						<div class="row hosp">
+							<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
+							<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
+							<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
+							<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
+						</div>
+						<div class="row hosp">
+							<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
+							<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
+							<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
+							<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
+						</div>
+					</form>
+					<?php
+					}
+					?>
                 </div>
 			</div>
         </div>
