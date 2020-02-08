@@ -241,3 +241,25 @@ div.active {
 	width: 20px;
 
 }
+
+.tabAntecedent th, td {
+	padding: 15px;
+	text-align: center;
+	border: 1px solid black;
+	letter-spacing: 0.5px;
+	
+	
+  }
+
+.tabAntecedent{
+	text-align: center;
+	width: 100%;
+	padding: 15px;
+}  
+.tabAntecedent tr:nth-child(even) {
+	background-color: #ffffff;
+}
+
+.tabAntecedent tr:nth-child(odd) {
+	background-color: #c3f1ff;
+}	
