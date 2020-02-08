@@ -125,7 +125,6 @@ nav {
 #login-form input {
 	text-align: center;
 }
-
 #login-form .btnSubmit {
     font-weight: 600;
     color: #fff;
@@ -147,7 +146,6 @@ nav {
 	text-align: right!important;
 	margin-top:3rem;
 }
-
 .img-login {
     width:60%;
     height:auto!important;
@@ -155,21 +153,21 @@ nav {
     margin-top:10%;
 }
 .form-group a {
-text-align: left!important;
+	text-align: left!important;
 }
 p {
-font-size:16px;
+	font-size:16px;
 }
 img {
     user-select: none!important;
 }
 @media (min-width: 1200px) {
-.row-eq-height {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display:         flex;
-}
+	.row-eq-height {
+	  display: -webkit-box;
+	  display: -webkit-flex;
+	  display: -ms-flexbox;
+	  display:         flex;
+	}
 }
 .active, .active a {
 	background-color:white;
@@ -184,19 +182,18 @@ width:40%;
     padding-left:  0px;
 }
 .team_row img {
-max-width:200px;
-max-height:200px;
+	max-width:200px;
+	max-height:200px;
 }
 .team_row {
     margin-right:  0px!important;
     margin-left:   0px!important;
 }
 @media screen (min-width: 992px) {
-.col-md-6 img {
-width:75%;
+	.col-md-6 img {
+		width:75%;
+	}
 }
-}
-
 .col-md-6 img {
     max-width: -webkit-fill-available;
     height: auto;
@@ -204,39 +201,41 @@ width:75%;
 .team {
 margin-top:20px;
 }
-
 div.active {
 	background-color:#93C5FC;
 }
-
 /* Julien */
 .tabES {
     border-collapse: collapse;
     width:500px
 }
-
 .tabES td {
     border: 1px solid black;
 }
-
 .infos, .infos2, .infos3, .infos4, .photo, #add, #modify {
 	border:none!important;
 }
-
 .labES {
 	width:250px;
 }
-
+.fa-folder-open {
+	font-size:170px;
+}
+.hosp div {
+	border:none!important;
+	text-align:center;
+}
+.hosp button{
+	background-color: transparent;
+	border: none;
+}
 
 /*Céline*/
 .img_patient{
 	width: 150px;
 	margin-top: 50px;
-
-
 }
 
 .male_patient{
 	width: 20px;
-
 }
