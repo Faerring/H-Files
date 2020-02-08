@@ -17,8 +17,7 @@ debSquelette();
             <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#menu1">Données générales</a></li>
                 <li><a data-toggle="tab" href="#menu2">Hospitalisation</a></li>
-                <li><a data-toggle="tab" href="#menu3">Examens</a></li>
-                <li><a data-toggle="tab" href="#menu4">Editer DMP</a></li>
+                <li><a href="../controleur/modification_dmp.php">Editer DMP</a></li>
             </ul>
 			<div class="tab-content">
                 <div id="menu1" class="tab-pane fade in active">
@@ -60,14 +59,6 @@ debSquelette();
                 </div>
                 <div id="menu2" class="tab-pane fade">
                     <h3>Menu 2</h3>
-                    <p>Some content.</p>
-                </div>
-                <div id="menu3" class="tab-pane fade">
-                    <h3>Menu 3</h3>
-                    <p>Some content.</p>
-                </div>
-                <div id="menu4" class="tab-pane fade">
-                    <h3>Menu 4</h3>
                     <p>Some content.</p>
                 </div>
 			</div>
