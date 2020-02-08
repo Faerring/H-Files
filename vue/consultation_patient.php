@@ -10,7 +10,7 @@ debSquelette();
                     <input type="text" class="form-control" placeholder="Nom du patient">
             </div>
         </div>
-    </div>
+ </div>
     <div class="row">
         <div class="col-lg-3">Arborescence de l'APHP</div>
         <div class="col-lg-offset-1 col-lg-8">
@@ -20,8 +20,7 @@ debSquelette();
                 <li><a data-toggle="tab" href="#menu3">Examens</a></li>
                 <li><a data-toggle="tab" href="#menu4">Editer DMP</a></li>
             </ul>
-
-            <div class="tab-content">
+			<div class="tab-content">
                 <div id="menu1" class="tab-pane fade in active">
                     <div class="row">
                         <div class="col-lg-2 photo">
@@ -37,14 +36,12 @@ debSquelette();
                         <div class="col-lg-5 infos2">
                             <br>
                             <p>Prénom : Maxime </p><br>
-                            <p>N° Sécurité Sociale : 122201566554 </div>
-                        </div>
-                        
+                            <p>N° Sécurité Sociale : 122201566554</p>
+						</div>
                     </div>
-                    <div class="row">
+					<div class="row">
                         <div class="col-lg-12">
                             <h1>ANTECEDENTS</h1>
-
                         </div>
                     </div>
                     <div class="row">
@@ -59,9 +56,7 @@ debSquelette();
                             <p>Téléphone : 06.11.22.33.44</p>
                             <p>Personne à contacter : Juliette RIBOND</p>
                         </div>
-
                     </div>  
-
                 </div>
                 <div id="menu2" class="tab-pane fade">
                     <h3>Menu 2</h3>
@@ -75,10 +70,9 @@ debSquelette();
                     <h3>Menu 4</h3>
                     <p>Some content.</p>
                 </div>
-            </div>
+			</div>
         </div>
     </div>
-
 
 <?php
 finSquelette();
