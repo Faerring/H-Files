@@ -217,6 +217,7 @@ div.active {
 
 .tabES td {
     border: 1px solid black;
+    text-align:center;
 }
 
 .infos, .infos2, .infos3, .infos4, .photo, #add, #modify {
