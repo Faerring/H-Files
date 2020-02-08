@@ -211,6 +211,7 @@ div.active {
 }
 .tabES td {
     border: 1px solid black;
+    text-align:center;
 }
 .infos, .infos2, .infos3, .infos4, .photo, #add, #modify {
 	border:none!important;
@@ -239,3 +240,25 @@ div.active {
 .male_patient{
 	width: 20px;
 }
+
+.tabAntecedent th, td {
+	padding: 15px;
+	text-align: center;
+	border: 1px solid black;
+	letter-spacing: 0.5px;
+	
+	
+  }
+
+.tabAntecedent{
+	text-align: center;
+	width: 100%;
+	padding: 15px;
+}  
+.tabAntecedent tr:nth-child(even) {
+	background-color: #ffffff;
+}
+
+.tabAntecedent tr:nth-child(odd) {
+	background-color: #c3f1ff;
+}	

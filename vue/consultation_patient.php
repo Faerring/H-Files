@@ -39,12 +39,44 @@ debSquelette();
 						</div>
                     </div>
 					<div class="row">
-                        <div class="col-lg-12">
-                            <h1>ANTECEDENTS</h1>
-                        </div>
+                        <h2>ANTECEDENTS</h2>
+                        
+                            <table class="tabAntecedent">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Antécédents médicaux</th>
+                                        <th scope="col">Antécédents chirurgicaux</th>
+                                        <th scope="col">Allergies</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Chute</td>
+                                        <td>Prothèse du genou droit</td>
+                                        <td>Produits laitiers</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AVC</td>
+                                        <td>Opération de la moelle épinière</td>
+                                        <td>Noix</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Chute</td>
+                                        <td>Prothèse du genou droit</td>
+                                        <td>Produits laitiers</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AVC</td>
+                                        <td>Opération de la moelle épinière</td>
+                                        <td>Noix</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        
+                        
                     </div>
                     <div class="row">
-                        <p>ADMINISTRATION</p>
+                        <h2>ADMINISTRATION</h2>
                         <div class="col-lg-offset-2 col-lg-5 infos3">
                             <p>Adresse : 2 rue de la Colline</p>
                             <p>Ville : Paris</p>

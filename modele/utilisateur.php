@@ -15,13 +15,14 @@ class Utilisateur
 
   public function initializeUser()
   {
+    require('connexion.php');
     if ($IDWeb == "" ){
       return "IDWeb n'a pas été initialisé";
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
     $sql = "SELECT * FROM 'personnel' WHERE 'IDWeb' =".$IDWeb ;
 
-    if ($result = $connexion->query($sql))
+    if ($result = $dbh->query($sql))
     {
       while ($row = $result->fetch_assoc()) {
           $this->IDPerso = $row["IDPerso"];
@@ -81,10 +82,11 @@ class Utilisateur
 
   public function setMail($newMail)
   {
+    require('connexion.php');
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
     $sql = "UPDATE 'personnel' SET 'mail' = ".$newMail."WHERE 'IDPerso' =".$id;
 
-    $connexion->exec($sql);
+    $dbh->exec($sql);
     $this->mail = $newMail;
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -94,6 +96,7 @@ class Utilisateur
 
   public function setMobilePhone($newTel)
   {
+    require('connexion.php');
     if (strlen($newTel) != 10)
     {
       return "Le numéro de téléphone doit contenir 10 caractères";
@@ -101,7 +104,7 @@ class Utilisateur
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
     $sql = "UPDATE 'personnel' SET 'tel' = ".$newTel."WHERE 'IDPerso' =".$id;
 
-    $connexion->exec($sql);
+    $dbh->exec($sql);
     $this->tel = $newTel;
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
 

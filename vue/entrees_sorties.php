@@ -1,9 +1,9 @@
 <?php
-include("loginpage.php");
 include("squeletteDePage.php");
-if (isConnected() == false) {
-	echo 'window.alert("Non connecté(e)")';
-    header("refresh:10;url=../controleur/loginpage.php");
+$connecter = isConnected();
+if ($connecter == false) {
+	echo "<script language='javascript'>alert('Non connecté(e)');</script>";
+	header("refresh:0;url=../controleur/loginpage.php"); 
 }
 else {
 	debSquelette();
@@ -32,6 +32,13 @@ else {
 							<td>Nom</td>
 							<td>Prénom</td>
 							<td>Date</td>
+							<td>Médecin traitant</td>
+						</tr>
+						<tr>
+							<td>Dupond</td>
+							<td>Michel</td>
+							<td>2020-02-05</td>
+							<td>Felro</td>
 						</tr>
 						<?php
 						while($ligne=$entrees->fetch()) {
@@ -45,6 +52,9 @@ else {
 							echo "<td>";
 							echo $ligne[2];
 							echo "</td>";
+							echo "<td>";
+							echo $ligne[3];
+							echo "</td>";
 							echo "</tr>";
 						}?>
 					</table>
@@ -54,6 +64,13 @@ else {
 							<td>Nom</td>
 							<td>Prénom</td>
 							<td>Date</td>
+							<td>Médecin traitant</td>
+						</tr>
+						<tr>
+							<td>Dupond</td>
+							<td>Michel</td>
+							<td>2020-02-08</td>
+							<td>Felro</td>
 						</tr>
 						<?php
 						while($ligne2=$sorties->fetch()) {
@@ -66,6 +83,9 @@ else {
 							echo "</td>";
 							echo "<td>";
 							echo $ligne2[2];
+							echo "</td>";
+							echo "<td>";
+							echo $ligne[3];
 							echo "</td>";
 							echo "</tr>";
 						}?>
@@ -115,5 +135,11 @@ else {
 	</div>
 	<?php
 	finSquelette();
+	if (isset($_POST['confirmerA'])) {
+		addAffectattion();
+	}
+	if (isset($_POST['confirmerM'])) {
+		updateAffectattion();
+	}
 }
 ?>
