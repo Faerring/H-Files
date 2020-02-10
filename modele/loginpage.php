@@ -19,8 +19,8 @@ function isConnected() {
 function connexion() {
 	$test = false;
 	if(isset($_POST['submit']) && (isConnectedToDB() == true) && ((isset($_POST['IDWeb']) && $_POST['IDWeb']!="")  && (isset($_POST['mdp']) && $_POST['mdp']!=""))) {
-		$y = "SELECT IDWeb, mdp FROM personnel";
-		$result = $dbh->query($y);
+		require('encapsulation.php');
+		$result = execRequest::getLogin();
 		$IDWeb = $_POST('IDWeb');
 		$mdp = $_POST('mdp');
 		session_start();
@@ -29,19 +29,15 @@ function connexion() {
 				$_SESSION['IDWeb'] = $IDWeb;
 				$_SESSION['mdp'] = $mdp;
 				if(isset($_SESSION['IDWeb'])) {
-					require('Encapsulation.php');
-					$execRequest = new execRequest();
 					require('utilisateur.php');
 					$user = new Utilisateur($IDWeb);	
-					
-					$_SESSION['execRequest'] = $execRequest;
 					$_SESSION['user'] = $user;
 				}
 				$a = true;         	
 			}
 		}
 		if ($a==true){
-			header('Location: accueil.php');
+			header('Location: contact.php');
 		}
 		return isConnected();
 	}
