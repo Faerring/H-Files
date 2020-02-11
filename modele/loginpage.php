@@ -9,7 +9,7 @@ function disconnect() {
 	}
 }
 function isConnected() {
-	if(isset($_SESSION['IDWeb']) && isset($_SESSION['mdp']) && isset($_SESSION['execRequest']) && isset($_SESSION['user'])) {
+	if(isset($_SESSION['IDWeb']) && isset($_SESSION['mdp']) && isset($_SESSION['user'])) {
 		return true;
 	}
 	else {

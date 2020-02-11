@@ -63,7 +63,7 @@ function navGenBottom() {
 		echo '
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-					  <li><a href="../controleur/profil.php"><span class="glyphicon glyphicon-user"></span> '.execRequest::getNom().' '.execRequest::getPrenom().'</a></li>
+					  <li><a href="../controleur/profil.php"><span class="glyphicon glyphicon-user"></span> '.$_SESSION['user']->getNom().' '.$_SESSION['user']->getPrenom().'</a></li>
 					  <li><a href="../controleur/loginpage.php?dc=true"><span class="glyphicon glyphicon-log-in"></span> Se déconnecter</a></li>
 					</ul>
 				</div>
