@@ -27,53 +27,101 @@ debSquelette();
                         </div>
                         <div class="col-lg-5 infos">
                             <img class = "male_patient" src = "../img/male.png" alt = "icon male"/>
-                            <p>NOM : RIBOND</p> 
+                            <?php
+                                while ($ligne=$donneesP->fetch()){
+                                    if ($ligne[6] = 'Homme' || $ligne[6] = 'Autre'){
+                                        echo "<img class = 'male_patient' src = '../img/male.png' alt = 'icon male'/>";
+                                    }
+                                    if ($ligne[6] = 'Femme'){
+                                        echo "<img class = 'female_patient' src = '../img/female.png' alt = 'icon female'/>";
+                                    }
+                                    echo "<li>Nom : ".$ligne[4]."</li>";
+                                    echo "<li>Date de naissance : ".$ligne[7]."</li>";
+                                    echo "<li>N° Carte Vitale : ".$ligne[3]."</li>";
+                                    echo "<li>Département : ".$depH."</li>";
+                                }
+                            ?>
+                            <!--p>NOM : RIBOND</p> 
                             <p>Date de naissance : 12/08/1986</p>
                             <p>Cause Hospitalisation : Ligament croisé tu connais</p>
-                            <p>Département : Des mythos</p>
+                            <p>Département : Des mythos</p-->
                         </div>
                         <div class="col-lg-5 infos2">
                             <br>
-                            <p>Prénom : Maxime </p><br>
-                            <p>N° Sécurité Sociale : 122201566554</p>
+                            <?php
+                                while ($ligne=$donneesP->fetch()){
+                                    echo "<li>Prénom : ".$ligne[5]."</li>";
+                                    echo "<li>N° Sécurité Sociale :".$ligne[7]."</li>";
+                                }
+                            ?>
+                            <!--p>Prénom : Maxime </p><br>
+                            <p>N° Sécurité Sociale : 122201566554</p-->
 						</div>
                     </div>
 					<div class="row">
                         <h2>ANTECEDENTS</h2>
-                        
-                            <table class="tabAntecedent">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Antécédents médicaux</th>
-                                        <th scope="col">Antécédents chirurgicaux</th>
-                                        <th scope="col">Allergies</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Chute</td>
-                                        <td>Prothèse du genou droit</td>
-                                        <td>Produits laitiers</td>
-                                    </tr>
-                                    <tr>
-                                        <td>AVC</td>
-                                        <td>Opération de la moelle épinière</td>
-                                        <td>Noix</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Chute</td>
-                                        <td>Prothèse du genou droit</td>
-                                        <td>Produits laitiers</td>
-                                    </tr>
-                                    <tr>
-                                        <td>AVC</td>
-                                        <td>Opération de la moelle épinière</td>
-                                        <td>Noix</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        
-                        
+                            <div class="col-lg-4 tabAntecedentMedicaux">
+                                <table class="tabAntecedentMedicaux">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Antécédents médicaux</th>
+                                            <!--th scope="col">Antécédents chirurgicaux</th>
+                                            <th scope="col">Allergies</th-->
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                            while($ligne=$a_medicaux->fetch()) {
+                                                echo "<tr>";
+                                                echo "<td>";
+                                                echo $a_medicaux;
+                                                echo "</td>";
+                                                echo "</tr>";
+                                            }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-lg-4 tabAntecedentChirurgicaux">
+                                <table class="tabAntecedentChirurgicaux">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Antécédents chirurgicaux</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                            while($ligne=$a_chirurgicaux->fetch()) {
+                                                echo "<tr>";
+                                                echo "<td>";
+                                                echo $a_chirurgicaux;
+                                                echo "</td>";
+                                                echo "</tr>";
+                                            }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-lg-4 tabAllergies">   
+                                <table class="tabAllergies">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Allergies</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                            while($ligne=$$allergies->fetch()) {
+                                                echo "<tr>";
+                                                echo "<td>";
+                                                echo $$allergies;
+                                                echo "</td>";
+                                                echo "</tr>";
+                                            }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
                     </div>
                     <div class="row">
                         <h2>ADMINISTRATION</h2>

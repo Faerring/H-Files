@@ -237,28 +237,26 @@ div.active {
 	margin-top: 50px;
 }
 
-.male_patient{
+.male_patient, .female_patient{
 	width: 20px;
 }
 
-.tabAntecedent th, td {
+.tabAntecedentMedicaux, .tabAntecedentChirurgicaux, .tabAllergies th, td {
 	padding: 15px;
 	text-align: center;
 	border: 1px solid black;
 	letter-spacing: 0.5px;
-	
-	
   }
 
-.tabAntecedent{
+.tabAntecedentMedicaux, .tabAntecedentChirurgicaux, .tabAllergies{
 	text-align: center;
 	width: 100%;
 	padding: 15px;
 }  
-.tabAntecedent tr:nth-child(even) {
+.tabAntecedentMedicaux, .tabAntecedentChirurgicaux, .tabAllergies tr:nth-child(even) {
 	background-color: #ffffff;
 }
 
-.tabAntecedent tr:nth-child(odd) {
+.tabAntecedentMedicaux, .tabAntecedentChirurgicaux, .tabAllergies  tr:nth-child(odd) {
 	background-color: #c3f1ff;
 }	
