@@ -201,17 +201,17 @@ debSquelette();
 						<div class="const">
 							<p><?php echo date("j/n/Y");?></p>  
 							<p>Heure de prise</p>  
-							<p><?php echo $const[0] ?></p>
+							<p><?php echo $const[0]; ?></p>
 						</div>
 					</div>
 					<hr style="margin-left: -20px;">
 					<div class="row">
 						<div class="const">
 							<p>Fréquence cardiaque : <?php echo $const[1] ?></p>
-							<p>Saturation : <?php echo $const[2] ?></p>
+							<p>Saturation : <?php echo $const[2]; ?></p>
 						</div>
 						<div class="const"><p>Tension artérielle : <?php echo $const[3] ?></p>  <p>Température : <?php echo $const[4] ?></p></div>
-						<p>Observation <?php echo $const[5] ?></p>
+						<p>Observation <?php echo $const[5]; ?></p>
 					</div>
 				</div>
 			</div>
