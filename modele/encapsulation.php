@@ -1,6 +1,6 @@
 <?php
 class execRequest {
-        
+
 	public static function checkNode($childNode) {
 		return $dbh->query("SELECT IDNoeud FROM Noeud WHERE IDNoeud=".$childNode);
 	}
@@ -27,7 +27,7 @@ class execRequest {
 	public static function getLastID() {
 		return $dbh->query("SELECT MAX(IDDocu) FROM document");
 	}
-	
+
     public static function viewPData($patientID){
 		$y = "SELECT * FROM dmp_patient WHERE UUID LIKE ".$patientID;
 		$donneesP = $dbh->query($y);
@@ -48,10 +48,24 @@ class execRequest {
 		$hospitalisations = $dbh->query($y);
 		return $actes;
 	}
-	
+
 	public static function getLogin() {
 		$q = "SELECT IDWeb, mdp FROM personnel";
 		return $dbh->query($y);
 	}
+
+	/*---------------------------------------------------------------------------------------------------*/
+	//enregistrement patiens
+	public static function folderInfoFromNSS($NSS)
+	{
+		$x = 'SELECT `nom`,`prenom`,`UUID` FROM `dmp_patient` WHERE `numSecu` = "'.$NSS.'";';
+		return $dbh->query($x);
+	}
+
+	public static function UUIDFromNss($NSS){
+		$x = 'SELECT `UUID` FROM `dmp_patient` WHERE `numSecu` = "'.$NSS.'";';
+		return $dbh->query($x);
+	}
+	/*---------------------------------------------------------------------------------------------------*/
 }
 ?>
