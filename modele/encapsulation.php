@@ -64,7 +64,7 @@ class execRequest {
       return $a_chirurgicaux;
     }
     public static function getDepartement($patientID){
-      $y = "SELECT noeud.nom FROM noeud JOIN dmp_patient ON noeud.IDNoeud = dmp_patient.IDNoeud WHERE UUID LIKE".$patientID;
+      $y = "SELECT noeud.nom FROM noeud JOIN dmp_patient ON noeud.IDNoeud = dmp_patient.IDNoeud WHERE UUID LIKE ".$patientID;
       $depHopital = $dbh->query($y);
       return $depHopital;
     }
