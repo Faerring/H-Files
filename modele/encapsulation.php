@@ -45,10 +45,14 @@ class execRequest {
 	}
     public static function getActes($patientID, $hosp) {
 		$y = "SELECT IDActe FROM Acte NATURAL JOIN Affectation NATURAL JOIN Hospitalisation WHERE UUID LIKE ".$patientID." AND IDHosp LIKE ".$hosp;
-		$hospitalisations = $dbh->query($y);
+		$actes = $dbh->query($y);
 		return $actes;
 	}
-
+	public static function getConst($patientID,
+		$y = "SELECT Heure, FC, Saturation, TA, Temp, Observation FROM constantes WHERE UUID LIKE '79567957957959757952791371257425' ORDER BY IDC DESC LIMIT 1";
+		$const = $dbh->query($y);
+		return $const;
+		
 	public static function getLogin() {
 		$q = "SELECT IDWeb, mdp FROM personnel";
 		return $dbh->query($y);

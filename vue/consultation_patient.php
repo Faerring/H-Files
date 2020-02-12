@@ -17,6 +17,7 @@ debSquelette();
             <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#menu1">Données générales</a></li>
                 <li><a data-toggle="tab" href="#menu2">Hospitalisation</a></li>
+				<li><a data-toggle="tab" href="#menu3">Constantes</a></li>
                 <li><a href="../controleur/modification_dmp.php">Editer DMP</a></li>
             </ul>
 			<div class="tab-content">
@@ -97,12 +98,11 @@ debSquelette();
                     <h3>Hospitalisation</h3>
                     <form action="../vue/consultation_patient.php" method="post">
 						<div class="row hosp">
-							<?php 
+							<?php /*
 								while($ligne=$hospitalisation->fetch()) {
 									echo '<div class="col-lg-3 col-md-6"><p>test</p><button name="hosp" type="submit" value="'.$ligne[0].'"><i class="fas fa-folder-open"></i></a></div>';
-								}
+								}*/
 							?>
-							<!--
 							<div class="col-lg-3 col-md-6"><p>test</p><button name="hosp" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
 							<div class="col-lg-3 col-md-6"><p>test</p><button name="hosp" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
 							<div class="col-lg-3 col-md-6"><p>test</p><button name="hosp" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
@@ -113,7 +113,7 @@ debSquelette();
 							<div class="col-lg-3 col-md-6"><p>test</p><button name="hosp" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
 							<div class="col-lg-3 col-md-6"><p>test</p><button name="hosp" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
 							<div class="col-lg-3 col-md-6"><p>test</p><button name="hosp" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
-							<div class="col-lg-3 col-md-6"><p>test</p><button name="hosp" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div> -->
+							<div class="col-lg-3 col-md-6"><p>test</p><button name="hosp" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
 						</div>
 					</form>
 					<?php 	
@@ -124,12 +124,11 @@ debSquelette();
                     <h3>Actes <a style="background-color:transparent; text-decoration:none" href="../vue/consultation_patient.php">&#8617;</a></h3>
                     <form action="../vue/consultation_actes.php" method="post">
 						<div class="row hosp">
-							<?php 
+							<?php /*
 								while($ligne=$actes->fetch()) {
 									echo '<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="'.$ligne[0].'"><i class="fas fa-folder-open"></i></a></div>';
-								}
+								}*/
 							?>
-							<!--
 							<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
 							<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
 							<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
@@ -141,13 +140,32 @@ debSquelette();
 							<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
 							<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
 							<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
-							<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div> -->
+							<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
 						</div>
 					</form>
 					<?php
 					}
 					?>
                 </div>
+				<div id="menu3" class="tab-pane fade" style="padding:0 20px">
+					<div class="row">
+						<p>Editer les constantes</p>
+						<div class="const">
+							<p><?php echo date("j/n/Y");?></p>  
+							<p>Heure de prise</p>  
+							<p><?php echo $const[0] ?></p>
+						</div>
+					</div>
+					<hr style="margin-left: -20px;">
+					<div class="row">
+						<div class="const">
+							<p>Fréquence cardiaque : <?php echo $const[1] ?></p>
+							<p>Saturation : <?php echo $const[2] ?></p>
+						</div>
+						<div class="const"><p>Tension artérielle : <?php echo $const[3] ?></p>  <p>Température : <?php echo $const[4] ?></p></div>
+						<p>Observation <?php echo $const[5] ?></p>
+					</div>
+				</div>
 			</div>
         </div>
     </div>
