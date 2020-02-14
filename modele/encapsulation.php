@@ -28,6 +28,7 @@ class execRequest {
 		return $dbh->query("SELECT MAX(IDDocu) FROM document");
 	}
 
+
     public static function viewPData($patientID){
 		$y = "SELECT * FROM dmp_patient WHERE UUID LIKE ".$patientID;
 		$donneesP = $dbh->query($y);
@@ -72,13 +73,40 @@ class execRequest {
 		$y = "SELECT Heure, FC, Saturation, TA, Temp, Observation FROM constantes WHERE UUID LIKE ".$patientID." ORDER BY IDC DESC LIMIT 1";
 		$const = $dbh->query($y);
 		return $const;
-	}
-		
+	}	
 	public static function getLogin() {
 		$q = "SELECT IDWeb, mdp FROM personnel";
 		return $dbh->query($y);
 	}
-
+	
+	
+	public static function getEntrees() {
+		$x = 'SELECT DISTINCT dmp_patient.nom, dmp_patient.prenom, DateAffec, medecintraitant.nom FROM personnel, medecintraitant, dmp_patient NATURAL JOIN hospitalisation NATURAL JOIN affectation 
+	WHERE (dmp_patient.IDNoeud = '.$noeud.') AND (personnel.nom = '.$nomPers.') AND (affectation.DateAffec IN (SELECT DateAffec FROM affectation WHERE DateAffec >= (SELECT DATE_SUB(NOW(), INTERVAL 7 DAY)))) 
+	AND (medecintraitant.IDMedTraitant = dmp_patient.IDMedTraitant)';
+		$result = $dbh->query($x);
+		return $result;
+	}
+	public static function getSorties() {
+		$x = 'SELECT DISTINCT dmp_patient.nom, dmp_patient.prenom, DateFinAffec, medecintraitant.nom FROM personnel, medecintraitant, dmp_patient NATURAL JOIN hospitalisation NATURAL JOIN affectation 
+	WHERE (dmp_patient.IDNoeud = '.$noeud.') AND (personnel.nom '.$nomPers.') AND (affectation.DateFinAffec IN (SELECT DateFinAffec FROM affectation WHERE DateFinAffec >= (SELECT DATE_SUB(NOW(), INTERVAL 7 DAY))))
+	AND (medecintraitant.IDMedTraitant = dmp_patient.IDMedTraitant)';
+		$result = $dbh->query($x);
+		return $result;
+	}
+	public static function requestAdd($nom,$prenom,$date) {
+		$x = 'INSERT INTO affectation VALUES("",NULL,'.$date.',(SELECT IDNoeud FROM personnel WHERE nom = '.$nomPers.'),(SELECT IDHosp FROM hospitalisation NATURAL JOIN dmp_patient WHERE nom LIKE '.$nom.' AND prenom LIKE '.$prenom.'))';
+		$result = $dbh->query($x);
+		return $result;
+	}
+	public static function requestUpdate($nom,$prenom,$date){
+		$x = 'SELECT IDAffec FROM affectation NATURAL JOIN hospitalisation NATURAL JOIN dmp_patient WHERE UUID = (SELECT UUID from dmp_patient WHERE nom LIKE '.$nom.' AND prenom LIKE '.$prenom.') AND DateFinAffec IS NULL';
+		$result = $dbh->query($x);
+		$y = 'UPDATE affectation SET DateFinAffec = '.$date.' WHERE IDAffec = '.$result;
+		$result2 = $dbh->query($y);
+		return $result2;
+	}
+	
 	/*---------------------------------------------------------------------------------------------------*/
 	//enregistrement patiens
 	public static function folderInfoFromNSS($NSS)
