@@ -2,15 +2,15 @@
 require('../modele/connexion.php');
 require('../modele/encapsulation.php');
 
-$hospitalisation = execRequest::getHospitalisation($_SESSION['user']->getUUID());
-$donneesP = execRequest::viewPData($_SESSION['user']->getUUID());
-$depH = execRequest::getDepartement($_SESSION['user']->getUUID());
-$allergies = execRequest::getAllergies($_SESSION['user']->getUUID());
-$a_medicaux = execRequest::getAntecedentMedicaux($_SESSION['user']->getUUID());
-$a_chirurgicaux = execRequest::getAntecedentChirurgicaux($_SESSION['user']->getUUID());
+$hospitalisation = execRequest::getHospitalisation($_POST['UUID']);
+$donneesP = execRequest::viewPData($_POST['UUID']);
+$depH = execRequest::getDepartement($_POST['UUID']);
+$allergies = execRequest::getAllergies($_POST['UUID']);
+$a_medicaux = execRequest::getAntecedentMedicaux($_POST['UUID']);
+$a_chirurgicaux = execRequest::getAntecedentChirurgicaux($_POST['UUID']);
 
 if(isset($_POST['hosp'])) {
-	$actes = execRequest::getActes($_SESSION['user']->getUUID(),$_POST['hosp']);
+	$actes = execRequest::getActes($_POST['UUID'],$_POST['hosp']);
 }
 $const = execRequest::getConst();
 require('../vue/consultation_patient.php');
