@@ -1,6 +1,6 @@
 <?php
 class execRequest {
-
+	/*---------------------------------------------------------------------------------------------------*/
 	public static function checkNode($childNode) {
 		return $dbh->query("SELECT IDNoeud FROM Noeud WHERE IDNoeud=".$childNode);
 	}
@@ -27,8 +27,9 @@ class execRequest {
 	public static function getLastID() {
 		return $dbh->query("SELECT MAX(IDDocu) FROM document");
 	}
-
-
+	/*---------------------------------------------------------------------------------------------------*/
+	/*---------------------------------------------------------------------------------------------------*/
+    //Consultation patient
     public static function viewPData($patientID){
 		$y = "SELECT * FROM dmp_patient WHERE UUID LIKE ".$patientID;
 		$donneesP = $dbh->query($y);
@@ -73,13 +74,17 @@ class execRequest {
 		$y = "SELECT Heure, FC, Saturation, TA, Temp, Observation FROM constantes WHERE UUID LIKE ".$patientID." ORDER BY IDC DESC LIMIT 1";
 		$const = $dbh->query($y);
 		return $const;
-	}	
+	}
+	/*---------------------------------------------------------------------------------------------------*/
+	/*---------------------------------------------------------------------------------------------------*/	
+	//Page de connexion
 	public static function getLogin() {
 		$q = "SELECT IDWeb, mdp FROM personnel";
 		return $dbh->query($y);
 	}
-	
-	
+	/*---------------------------------------------------------------------------------------------------*/	
+	/*---------------------------------------------------------------------------------------------------*/
+	//Page entrées/sorties
 	public static function getEntrees() {
 		$x = 'SELECT DISTINCT dmp_patient.nom, dmp_patient.prenom, DateAffec, medecintraitant.nom FROM personnel, medecintraitant, dmp_patient NATURAL JOIN hospitalisation NATURAL JOIN affectation 
 	WHERE (dmp_patient.IDNoeud = '.$noeud.') AND (personnel.nom = '.$nomPers.') AND (affectation.DateAffec IN (SELECT DateAffec FROM affectation WHERE DateAffec >= (SELECT DATE_SUB(NOW(), INTERVAL 7 DAY)))) 
@@ -106,9 +111,9 @@ class execRequest {
 		$result2 = $dbh->query($y);
 		return $result2;
 	}
-	
 	/*---------------------------------------------------------------------------------------------------*/
-	//enregistrement patiens
+	/*---------------------------------------------------------------------------------------------------*/
+	//enregistrement patients
 	public static function folderInfoFromNSS($NSS)
 	{
 		$x = 'SELECT `nom`,`prenom`,`UUID` FROM `dmp_patient` WHERE `numSecu` = "'.$NSS.'";';
