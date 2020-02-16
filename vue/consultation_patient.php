@@ -127,14 +127,28 @@ debSquelette();
                     <div class="row">
                         <h2>ADMINISTRATION</h2>
                         <div class="col-lg-offset-2 col-lg-5 infos3">
-                            <p>Adresse : 2 rue de la Colline</p>
+                            <?php 
+                                while ($ligne=$donneesP->fetch()){ 
+                                    echo "<li>Adresse : ".$ligne[4]."</li>";
+                                    echo "<li>Ville : ".$ligne[7]."</li>";
+                                    echo "<li>Médecin traitant : ".$ligne[3]."</li>";
+                                }
+                            ?>
+                            <!--p>Adresse : 2 rue de la Colline</p>
                             <p>Ville : Paris</p>
-                            <p>Médecin traitant : Dr Lu</p>
+                            <p>Médecin traitant : Dr Lu</p-->
                         </div>
                         <div class="col-lg-5 infos4">
-                            <p>Code Postal : 75013</p>
+                            <?php 
+                                while ($ligne=$donneesP->fetch()){ 
+                                    echo "<li>Code Postal : ".$ligne[4]."</li>";
+                                    echo "<li>Téléphone : ".$ligne[7]."</li>";
+                                    echo "<li>Personne à contacter : ".$ligne[3]."</li>";
+                                }
+                            ?>
+                            <!--p>Code Postal : 75013</p>
                             <p>Téléphone : 06.11.22.33.44</p>
-                            <p>Personne à contacter : Juliette RIBOND</p>
+                            <p>Personne à contacter : Juliette RIBOND</p-->
                         </div>
                     </div>  
                 </div>
