@@ -8,7 +8,7 @@ class execRequest {
 		$q = $dbh->prepare("INSERT INTO Personnel VALUES(:ID, :profession, :login, :mdp, :nom, :prenom, :mail, :node)");
 		$q->execute(array("ID"=>$ID, "profession"=>$profession, "login"=>$login	, "mdp"=>$mdp, "nom"=>$nom, "prenom"=>$prenom, "mail"=>$mail, "node"=>$node));
 	}
-	public static function addEmployee($nmdp) {
+	public static function setNewPasswd($nmdp) {
 		$q = $dbh->prepare("UPDATE Personnel SET motDePasse=SHA1(:motDePasse");
 		$q->execute(array("motDePasse"=>$nmdp));
 	}
@@ -34,11 +34,6 @@ class execRequest {
 		$y = "SELECT * FROM dmp_patient WHERE UUID LIKE ".$patientID;
 		$donneesP = $dbh->query($y);
 		return $donneesP;
-    }
-    public static function getAllergies($patientID){
-        $y = "SELECT * FROM dmp_patient WHERE UUID LIKE ".$patientID;
-        $donneesP = $dbh->query($y);
-        return $donneesP;
     }
     public static function getHospitalisation($patientID) {
 		$y = "SELECT IDHosp FROM Hospitalisation WHERE UUID LIKE ".$patientID;

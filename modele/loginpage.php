@@ -18,7 +18,7 @@ function isConnected() {
 }
 function connexion() {
 	$test = false;
-	if(isset($_POST['submit']) && (isConnectedToDB() == true) && ((isset($_POST['IDWeb']) && $_POST['IDWeb']!="")  && (isset($_POST['mdp']) && $_POST['mdp']!=""))) {
+	if(isset($_POST['submit']) && isset($dbh) && ((isset($_POST['IDWeb']) && $_POST['IDWeb']!="")  && (isset($_POST['mdp']) && $_POST['mdp']!=""))) {
 		require('encapsulation.php');
 		$result = execRequest::getLogin();
 		$IDWeb = $_POST('IDWeb');
