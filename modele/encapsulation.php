@@ -1,5 +1,8 @@
 <?php
+
 class execRequest {
+
+	
 	/*---------------------------------------------------------------------------------------------------*/
 	public static function checkNode($childNode) {
 		return $dbh->query("SELECT IDNoeud FROM Noeud WHERE IDNoeud=".$childNode);
@@ -73,9 +76,11 @@ class execRequest {
 	/*---------------------------------------------------------------------------------------------------*/
 	/*---------------------------------------------------------------------------------------------------*/	
 	//Page de connexion
-	public static function getLogin() {
-		$q = "SELECT IDWeb, mdp FROM personnel";
-		return $dbh->query($y);
+	public static function getLogin($dbh) {
+		if($dbh!=false) {
+			$q = "SELECT IDWeb, mdp FROM personnel";
+			return $dbh->query($q);
+		}
 	}
 	/*---------------------------------------------------------------------------------------------------*/	
 	/*---------------------------------------------------------------------------------------------------*/

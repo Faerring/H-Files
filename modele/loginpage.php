@@ -16,21 +16,19 @@ function isConnected() {
 		return false;
 	}
 }
-function connexion() {
-	$test = false;
+function connexion($dbh) {
 	if(isset($_POST['submit']) && isset($dbh) && ((isset($_POST['IDWeb']) && $_POST['IDWeb']!="")  && (isset($_POST['mdp']) && $_POST['mdp']!=""))) {
-		require('encapsulation.php');
-		$result = execRequest::getLogin();
-		$IDWeb = $_POST('IDWeb');
-		$mdp = $_POST('mdp');
+		$result = execRequest::getLogin($dbh);
+		$IDWeb = $_POST['IDWeb'];
+		$mdp = $_POST['mdp'];
 		session_start();
 		while($ligne=$result->fetch()) {
 			if (($IDWeb == $ligne[0]) && ($mdp == $ligne[1])){
 				$_SESSION['IDWeb'] = $IDWeb;
 				$_SESSION['mdp'] = $mdp;
 				if(isset($_SESSION['IDWeb'])) {
-					require('utilisateur.php');
-					$user = new Utilisateur($IDWeb);	
+					$user = new Utilisateur();
+					$user->initializeUser($IDWeb);
 					$_SESSION['user'] = $user;
 				}
 				$a = true;         	
@@ -38,6 +36,10 @@ function connexion() {
 		}
 		if ($a==true){
 			header('Location: contact.php');
+		}
+		else {
+		        echo "<script language='javascript'>alert('Identifiant ou mot de passe incorrect');</script>";
+				header("refresh:0;url=../controleur/loginpage.php"); 
 		}
 		return isConnected();
 	}
