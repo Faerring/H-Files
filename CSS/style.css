@@ -152,8 +152,11 @@ nav {
     pointer-events: none;
     margin-top:10%;
 }
-.form-group a {
+.form-group {
 	text-align: left!important;
+}
+.form-group a:hover{
+	color:blue!important;
 }
 p {
 	font-size:16px;

@@ -23,7 +23,7 @@ debSquelette();
 								</div>
 								<div class="form-group">
 									<input type="password" class="form-control" placeholder="Mot de passe" name="mdp" size="40" required="">
-									<a href="../vue/mdpoublie.php"><p>Mot de passe oublié ?</p></a>
+									<a href="../vue/mdpoublie.php">Mot de passe oublié ?</a>
 								</div>
 								<div class="form-group" id="formSubmit">
 									<input name="submit" class="btnSubmit" type="submit" value="Se connecter">
