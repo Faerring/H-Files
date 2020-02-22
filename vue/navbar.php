@@ -87,8 +87,6 @@ function viewNavBar(){
 	
 	if(isset($_SESSION['user'])) {
 		$u = $_SESSION['user'];
-		var_dump($u);
-		exit();
 		if($u->getProfession() == "Administrateur") {
 			navbarAdmin();
 		}

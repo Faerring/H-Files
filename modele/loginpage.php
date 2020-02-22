@@ -17,9 +17,7 @@ function connexion($dbh) {
 				$_SESSION['IDWeb'] = $IDWeb;
 				$_SESSION['mdp'] = $mdp;
 				if(isset($_SESSION['IDWeb'])) {
-					$user = new Utilisateur();
-					$user->initializeUser($IDWeb,$dbh);
-					$_SESSION['user'] = $user;
+					$_SESSION['user'] = new Utilisateur($IDWeb,$dbh);
 				}
 				$a = true;         	
 			}
