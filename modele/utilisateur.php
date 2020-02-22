@@ -15,6 +15,7 @@ class Utilisateur
 
   public function initializeUser($id)
   {
+    $this->IDWeb = $id ;
     require('connexion.php');
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
     $sql = "SELECT * FROM 'personnel' WHERE 'IDWeb' =".$id ;
