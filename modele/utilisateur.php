@@ -13,28 +13,27 @@ class Utilisateur
   private $pwd = "";
 
 
-  public function initializeUser($id)
+  public function initializeUser($id,$dbh)
   {
-    $this->IDWeb = $id ;
-    require('connexion.php');
+    $this->IDWeb = $id;
+    
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
-    $sql = "SELECT * FROM 'personnel' WHERE 'IDWeb' =".$id ;
-
-    if ($result = $dbh->query($sql))
-    {
-      while ($row = $result->fetch_assoc()) {
-          $this->IDPerso = $row["IDPerso"];
-          $this->IDNoeud = $row["IDNoeud"];
-          $this->lastname = $row["nom"];
-          $this->firstname = $row["prenom"];
-          $this->profession = $row["profession"];
-          $this->mail = $row["mail"];
-          $this->tel = $row["tel"];
-          $this->pwd = $row["mdp"];
-          $this->img = $row["image"];
-
+    $sql = "SELECT * FROM personnel WHERE IDWeb = '".$id."'";
+	
+    $result = $dbh->query($sql);
+	
+      while ($row = $result->fetch()) {
+          $this->IDPerso = $row[0];
+          $this->IDNoeud = $row[8];
+          $this->lastname = $row[4];
+          $this->firstname = $row[5];
+          $this->profession = $row[1];
+          $this->mail = $row[6];
+          $this->tel = $row[7];
+          $this->pwd = $row[3];
+          $this->img = $row[9];
       }
-    }
+
 
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////
   }

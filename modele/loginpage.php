@@ -1,13 +1,4 @@
 <?php
-function disconnect() {
-	if(isset($_GET['dc'])) {
-		session_start();
-
-		session_unset();
-
-		session_destroy();
-	}
-}
 function isConnected() {
 	if(isset($_SESSION['IDWeb']) && isset($_SESSION['mdp']) && isset($_SESSION['user'])) {
 		return true;
@@ -21,14 +12,13 @@ function connexion($dbh) {
 		$result = execRequest::getLogin($dbh);
 		$IDWeb = $_POST['IDWeb'];
 		$mdp = $_POST['mdp'];
-		session_start();
 		while($ligne=$result->fetch()) {
 			if (($IDWeb == $ligne[0]) && ($mdp == $ligne[1])){
 				$_SESSION['IDWeb'] = $IDWeb;
 				$_SESSION['mdp'] = $mdp;
 				if(isset($_SESSION['IDWeb'])) {
 					$user = new Utilisateur();
-					$user->initializeUser($IDWeb);
+					$user->initializeUser($IDWeb,$dbh);
 					$_SESSION['user'] = $user;
 				}
 				$a = true;         	

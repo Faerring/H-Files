@@ -59,12 +59,11 @@ function navGenTop() {
 
 function navGenBottom() {
 	if(isset($_SESSION['user'])) {
-		require("../modele/encapsulation.php");
 		echo '
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-					  <li><a href="../controleur/profil.php"><span class="glyphicon glyphicon-user"></span> '.$_SESSION['user']->getNom().' '.$_SESSION['user']->getPrenom().'</a></li>
-					  <li><a href="../controleur/loginpage.php?dc=true"><span class="glyphicon glyphicon-log-out"></span> Se déconnecter</a></li>
+					  <li><a href="../controleur/profil.php"><span class="glyphicon glyphicon-user"></span> '.$_SESSION['user']->getNom().' '.$_SESSION['user']->getPrenom().' </a></li>
+					  <li><a href="../modele/logout.php"><span class="glyphicon glyphicon-log-out"></span> Se déconnecter</a></li>
 					</ul>
 				</div>
 			  </div>
@@ -84,8 +83,9 @@ function navGenBottom() {
 	}
 }
 function viewNavBar(){
-	navGenTop();
+	navGenTop();	
 	if(isset($_SESSION['user'])) {
+		
 		if($_SESSION['user']->getProfession() == "Administrateur") {
 			navbarAdmin();
 		}
@@ -98,7 +98,7 @@ function viewNavBar(){
 		if($_SESSION['user']->getProfession() == "Secrétaire") {
 			navbarSec();
 		}
-		else {
+		if($_SESSION['user']->getProfession() != ("Secrétaire" || "Medecin" || "Infirmier" || "Administrateur")) {
 			navbarDefault();
 		}
 	}
