@@ -83,26 +83,31 @@ function navGenBottom() {
 	}
 }
 function viewNavBar(){
-	navGenTop();	
+	navGenTop();
+	
 	if(isset($_SESSION['user'])) {
-		
-		if($_SESSION['user']->getProfession() == "Administrateur") {
+		$u = $_SESSION['user'];
+		var_dump($u);
+		exit();
+		if($u->getProfession() == "Administrateur") {
 			navbarAdmin();
 		}
-		if($_SESSION['user']->getProfession() == "Medecin") {
+		if($u->getProfession() == "Medecin") {	
 			navbarMed();
 		}
-		if($_SESSION['user']->getProfession() == "Infirmier") {
+		if($u->getProfession() == "Infirmier") {
 			navbarInf();
 		}
-		if($_SESSION['user']->getProfession() == "Secrétaire") {
+		if($u->getProfession() == "Secrétaire") {
 			navbarSec();
 		}
-		if($_SESSION['user']->getProfession() != ("Secrétaire" || "Medecin" || "Infirmier" || "Administrateur")) {
+		if($u->getProfession() != ("Secrétaire" || "Medecin" || "Infirmier" || "Administrateur")) {
 			navbarDefault();
 		}
+		
 	}
 	else {
+		
 		echo '
 						<li class="'.active("contact.php").'"><a href="../controleur/contact.php">Qui sommes nous ?</a></li>
 		';
