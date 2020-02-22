@@ -2,32 +2,16 @@
 require('connexion.php');
 require('utilisateur.php');
 require('encapsulation.php');
-$noeud = $_SESSION['user']->getIDNoeud();
-$nomPers = $_SESSION['user']->getNom();
+//$noeud = $_SESSION['user']->getIDNoeud();
+//$nomPers = $_SESSION['user']->getNom();
 
-function getEntrees() {
-	$x = 'SELECT DISTINCT dmp_patient.nom, dmp_patient.prenom, DateAffec, medecintraitant.nom FROM personnel, medecintraitant, dmp_patient NATURAL JOIN hospitalisation NATURAL JOIN affectation 
-WHERE (dmp_patient.IDNoeud = '.$noeud.') AND (personnel.nom = '.$nomPers.') AND (affectation.DateAffec IN (SELECT DateAffec FROM affectation WHERE DateAffec >= (SELECT DATE_SUB(NOW(), INTERVAL 7 DAY)))) 
-AND (medecintraitant.IDMedTraitant = dmp_patient.IDMedTraitant)';
-	$result = $dbh->query($x);
-	return $result;
-}
-
-function getSorties() {
-	$x = 'SELECT DISTINCT dmp_patient.nom, dmp_patient.prenom, DateFinAffec, medecintraitant.nom FROM personnel, medecintraitant, dmp_patient NATURAL JOIN hospitalisation NATURAL JOIN affectation 
-WHERE (dmp_patient.IDNoeud = '.$noeud.') AND (personnel.nom '.$nomPers.') AND (affectation.DateFinAffec IN (SELECT DateFinAffec FROM affectation WHERE DateFinAffec >= (SELECT DATE_SUB(NOW(), INTERVAL 7 DAY))))
-AND (medecintraitant.IDMedTraitant = dmp_patient.IDMedTraitant)';
-	$result = $dbh->query($x);
-	return $result;
-}
-
-function addAffectattion(){
+function addAffectattion($dbh){
 	if(isset($_POST['confirmerA'])) {
 		$nom = $_POST['nom'];
 		$prenom = $_POST['prenom'];
 		$date = $_POST['date'];
 		
-		$result = execRequest::requestAdd($nom,$prenom,$date);
+		$result = execRequest::requestAdd($nom,$prenom,$date,$dbh);
 		if ($result->rowCount() != 0)
 			echo "L'affectation a bien été ajoutée";
 			return $result;
@@ -36,13 +20,13 @@ function addAffectattion(){
 		return False;
 }
 
-function updateAffectattion(){
+function updateAffectattion($dbh){
 	if(isset($_POST['confirmerM'])) {
 		$nom = $_POST['nom'];
 		$prenom = $_POST['prenom'];
 		$date = $_POST['date'];
 		
-		$result = execRequest::requestUpdate($nom,$prenom,$date);
+		$result = execRequest::requestUpdate($nom,$prenom,$date,$dbh);
 		if ($result->rowCount() != 0)
 			echo "L'affectation a été modifiée";
 			return $result;
