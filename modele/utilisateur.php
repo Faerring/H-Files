@@ -13,14 +13,11 @@ class Utilisateur
   private $pwd = "";
 
 
-  public function initializeUser()
+  public function initializeUser($id)
   {
     require('connexion.php');
-    if ($IDWeb == "" ){
-      return "IDWeb n'a pas été initialisé";
-    }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
-    $sql = "SELECT * FROM 'personnel' WHERE 'IDWeb' =".$IDWeb ;
+    $sql = "SELECT * FROM 'personnel' WHERE 'IDWeb' =".$id ;
 
     if ($result = $dbh->query($sql))
     {
