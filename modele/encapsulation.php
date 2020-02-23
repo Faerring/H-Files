@@ -67,7 +67,14 @@ class execRequest {
       $y = "SELECT noeud.nom FROM noeud JOIN dmp_patient ON noeud.IDNoeud = dmp_patient.IDNoeud WHERE UUID LIKE ".$patientID;
       $depHopital = $dbh->query($y);
       return $depHopital;
-    }
+	}
+	
+	public static function getMedecinTraitant($patientID){
+		$y = "SELECT medecintraitant.nom FROM medecintraitant JOIN dmp_patient ON medecintraitant.IDMedTraitant = dmp_patient.IDMedTraitant WHERE UUID LIKE ".$patientID;
+		$MedecinTraitant = $dbh->query($y);
+		return $MedecinTraitant;
+	  }
+
 	public static function getConst($patientID) {
 		$y = "SELECT Heure, FC, Saturation, TA, Temp, Observation FROM constantes WHERE UUID LIKE ".$patientID." ORDER BY IDC DESC LIMIT 1";
 		$const = $dbh->query($y);

@@ -42,10 +42,7 @@ debSquelette();
                                     echo "<li>Département : ".$depH."</li>";
                                 }
                             ?>
-                            <!--p>NOM : RIBOND</p> 
-                            <p>Date de naissance : 12/08/1986</p>
-                            <p>Cause Hospitalisation : Ligament croisé tu connais</p>
-                            <p>Département : Des mythos</p-->
+                           
                         </div>
                         <div class="col-lg-5 infos2">
                             <br>
@@ -55,8 +52,6 @@ debSquelette();
                                     echo "<li>N° Sécurité Sociale :".$ligne[7]."</li>";
                                 }
                             ?>
-                            <!--p>Prénom : Maxime </p><br>
-                            <p>N° Sécurité Sociale : 122201566554</p-->
 						</div>
                     </div>
 					<div class="row">
@@ -66,8 +61,6 @@ debSquelette();
                                     <thead>
                                         <tr>
                                             <th scope="col">Antécédents médicaux</th>
-                                            <!--th scope="col">Antécédents chirurgicaux</th>
-                                            <th scope="col">Allergies</th-->
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -129,26 +122,21 @@ debSquelette();
                         <div class="col-lg-offset-2 col-lg-5 infos3">
                             <?php 
                                 while ($ligne=$donneesP->fetch()){ 
-                                    echo "<li>Adresse : ".$ligne[4]."</li>";
-                                    echo "<li>Ville : ".$ligne[7]."</li>";
-                                    echo "<li>Médecin traitant : ".$ligne[3]."</li>";
+                                    echo "<li>Adresse : ".$ligne[8]."</li>";
+                                    echo "<li>Lieu de naissance: ".$ligne[9]."</li>";
+                                    echo "<li>Médecin traitant : ".$MedecinTraitant."</li>";
                                 }
                             ?>
-                            <!--p>Adresse : 2 rue de la Colline</p>
-                            <p>Ville : Paris</p>
-                            <p>Médecin traitant : Dr Lu</p-->
+
                         </div>
                         <div class="col-lg-5 infos4">
                             <?php 
                                 while ($ligne=$donneesP->fetch()){ 
-                                    echo "<li>Code Postal : ".$ligne[4]."</li>";
-                                    echo "<li>Téléphone : ".$ligne[7]."</li>";
-                                    echo "<li>Personne à contacter : ".$ligne[3]."</li>";
+                                    echo "<li>Téléphone : ".$ligne[10]."</li>";
+                                    echo "<li>N° Sécurité sociale du Responsable légal : ".$ligne[2]."</li>";
                                 }
                             ?>
-                            <!--p>Code Postal : 75013</p>
-                            <p>Téléphone : 06.11.22.33.44</p>
-                            <p>Personne à contacter : Juliette RIBOND</p-->
+
                         </div>
                     </div>  
                 </div>
