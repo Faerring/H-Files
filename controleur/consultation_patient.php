@@ -13,6 +13,6 @@ $a_chirurgicaux = execRequest::getAntecedentChirurgicaux("7956795795795975795279
 if(isset($_POST['hosp'])) {
 	$actes = execRequest::getActes($_POST['UUID'],$_POST['hosp']);
 }
-$const = execRequest::getConst();
+$const = execRequest::getConst("79567957957959757952791371257425",$dbh)->fetch();
 require('../vue/consultation_patient.php');
 ?>

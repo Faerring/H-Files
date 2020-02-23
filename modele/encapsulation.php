@@ -34,49 +34,47 @@ class execRequest {
 	/*---------------------------------------------------------------------------------------------------*/
     //Consultation patient
     public static function viewPData($patientID,$dbh){
-		$y = "SELECT * FROM dmp_patient WHERE UUID LIKE ".$patientID;
+		$y = "SELECT * FROM dmp_patient WHERE UUID LIKE '".$patientID."'";
 		$donneesP = $dbh->query($y);
 		return $donneesP;
     }
     public static function getHospitalisation($patientID,$dbh) {
-		$y = "SELECT IDHosp FROM Hospitalisation WHERE UUID LIKE ".$patientID;
+		$y = "SELECT IDHosp FROM hospitalisation WHERE UUID LIKE '".$patientID."'";
 		$hospitalisations = $dbh->query($y);
 		return $hospitalisations;
 	}
     public static function getActes($patientID, $hosp) {
-		$y = "SELECT IDActe FROM Acte NATURAL JOIN Affectation NATURAL JOIN Hospitalisation WHERE UUID LIKE ".$patientID." AND IDHosp LIKE ".$hosp;
+		$y = "SELECT IDActe FROM acte NATURAL JOIN affectation NATURAL JOIN hospitalisation WHERE UUID LIKE '".$patientID."' AND IDHosp LIKE ".$hosp;
 		$actes = $dbh->query($y);
 		return $actes;
 	}
     public static function getAllergies($patientID,$dbh){
-        $y = "SELECT antecedent.nom FROM `antecedent` JOIN dmp_patient ON antecedent.UUID = dmp_patient.UUID WHERE type = 'Allergies' AND UUID LIKE  ".$patientID;
+        $y = "SELECT antecedent.nom FROM `antecedent` JOIN dmp_patient ON antecedent.UUID = dmp_patient.UUID WHERE type = 'Allergies' AND dmp_patient.UUID LIKE '".$patientID."'";
         $allergies = $dbh->query($y);
         return $allergies;
     }
     public static function getAntecedentMedicaux($patientID,$dbh){
-      $y = "SELECT antecedent.nom FROM `antecedent` JOIN dmp_patient ON antecedent.UUID = dmp_patient.UUID WHERE type = 'Antécédents médicaux' AND UUID LIKE  ".$patientID;
+      $y = "SELECT antecedent.nom FROM `antecedent` JOIN dmp_patient ON antecedent.UUID = dmp_patient.UUID WHERE type = 'Antécédents médicaux' AND dmp_patient.UUID LIKE  '".$patientID."'";
       $a_medicaux= $dbh->query($y);
       return $a_medicaux;
     }
     public static function getAntecedentChirurgicaux($patientID,$dbh){
-      $y = "SELECT antecedent.nom FROM `antecedent` JOIN dmp_patient ON antecedent.UUID = dmp_patient.UUID WHERE type = 'Antécédents chirurgicaux' AND UUID LIKE  ".$patientID;
+      $y = "SELECT antecedent.nom FROM `antecedent` JOIN dmp_patient ON antecedent.UUID = dmp_patient.UUID WHERE type = 'Antécédents chirurgicaux' AND dmp_patient.UUID LIKE  '".$patientID."'";
       $a_chirurgicaux= $dbh->query($y);
       return $a_chirurgicaux;
     }
     public static function getDepartement($patientID,$dbh){
-      $y = "SELECT noeud.nom FROM noeud JOIN dmp_patient ON noeud.IDNoeud = dmp_patient.IDNoeud WHERE UUID LIKE ".$patientID;
+      $y = "SELECT noeud.nom FROM noeud JOIN dmp_patient ON noeud.IDNoeud = dmp_patient.IDNoeud WHERE dmp_patient.UUID LIKE '".$patientID."'";
       $depHopital = $dbh->query($y);
       return $depHopital;
 	}
-	
 	public static function getMedecinTraitant($patientID,$dbh){
-		$y = "SELECT medecintraitant.nom FROM medecintraitant JOIN dmp_patient ON medecintraitant.IDMedTraitant = dmp_patient.IDMedTraitant WHERE UUID LIKE ".$patientID;
+		$y = "SELECT medecintraitant.nom FROM medecintraitant JOIN dmp_patient ON medecintraitant.IDMedTraitant = dmp_patient.IDMedTraitant WHERE dmp_patient.UUID LIKE '".$patientID."'";
 		$MedecinTraitant = $dbh->query($y);
 		return $MedecinTraitant;
 	  }
-
 	public static function getConst($patientID,$dbh) {
-		$y = "SELECT Heure, FC, Saturation, TA, Temp, Observation FROM constantes WHERE UUID LIKE ".$patientID." ORDER BY IDC DESC LIMIT 1";
+		$y = "SELECT Heure, FC, Saturation, TA, Temp, Observation FROM constantes WHERE UUID LIKE '".$patientID."' ORDER BY IDC DESC LIMIT 1";
 		$const = $dbh->query($y);
 		return $const;
 	}

@@ -27,30 +27,27 @@ debSquelette();
                             <img class = "img_patient" src = "../img/profil_patient.jpg" alt = "Photo profil patient">
                         </div>
                         <div class="col-lg-5 infos">
-                            <img class = "male_patient" src = "../img/male.png" alt = "icon male"/>
                             <?php
-                                while ($ligne=$donneesP->fetch()){
-                                    if ($ligne[6] = 'Homme' || $ligne[6] = 'Autre'){
+									$donneesP = $donneesP->fetch();
+                                    if ($donneesP[6] == 'Homme' || $donneesP[6] == 'Autre'){
                                         echo "<img class = 'male_patient' src = '../img/male.png' alt = 'icon male'/>";
                                     }
-                                    if ($ligne[6] = 'Femme'){
+                                    else {
                                         echo "<img class = 'female_patient' src = '../img/female.png' alt = 'icon female'/>";
                                     }
-                                    echo "<li>Nom : ".$ligne[4]."</li>";
-                                    echo "<li>Date de naissance : ".$ligne[7]."</li>";
-                                    echo "<li>N° Carte Vitale : ".$ligne[3]."</li>";
-                                    echo "<li>Département : ".$depH."</li>";
-                                }
+                                    echo "<li>Nom : ".$donneesP[4]."</li>";
+                                    echo "<li>Date de naissance : ".$donneesP[7]."</li>";
+                                    echo "<li>N° Carte Vitale : ".$donneesP[3]."</li>";
+                                    echo "<li>Département : ".$depH->fetch()[0]."</li>";
+
                             ?>
                            
                         </div>
                         <div class="col-lg-5 infos2">
                             <br>
                             <?php
-                                while ($ligne=$donneesP->fetch()){
-                                    echo "<li>Prénom : ".$ligne[5]."</li>";
-                                    echo "<li>N° Sécurité Sociale :".$ligne[7]."</li>";
-                                }
+                                    echo "<li>Prénom : ".$donneesP[5]."</li>";
+                                    echo "<li>N° Sécurité Sociale : ".$donneesP[1]."</li>";
                             ?>
 						</div>
                     </div>
@@ -68,7 +65,7 @@ debSquelette();
                                             while($ligne=$a_medicaux->fetch()) {
                                                 echo "<tr>";
                                                 echo "<td>";
-                                                echo $a_medicaux;
+                                                echo $ligne[0];
                                                 echo "</td>";
                                                 echo "</tr>";
                                             }
@@ -88,7 +85,7 @@ debSquelette();
                                             while($ligne=$a_chirurgicaux->fetch()) {
                                                 echo "<tr>";
                                                 echo "<td>";
-                                                echo $a_chirurgicaux;
+                                                echo $ligne[0];
                                                 echo "</td>";
                                                 echo "</tr>";
                                             }
@@ -105,10 +102,10 @@ debSquelette();
                                     </thead>
                                     <tbody>
                                         <?php
-                                            while($ligne=$$allergies->fetch()) {
+                                            while($ligne=$allergies->fetch()) {
                                                 echo "<tr>";
                                                 echo "<td>";
-                                                echo $$allergies;
+                                                echo $ligne[0];
                                                 echo "</td>";
                                                 echo "</tr>";
                                             }
@@ -121,20 +118,16 @@ debSquelette();
                         <h2>ADMINISTRATION</h2>
                         <div class="col-lg-offset-2 col-lg-5 infos3">
                             <?php 
-                                while ($ligne=$donneesP->fetch()){ 
-                                    echo "<li>Adresse : ".$ligne[8]."</li>";
-                                    echo "<li>Lieu de naissance: ".$ligne[9]."</li>";
-                                    echo "<li>Médecin traitant : ".$MedecinTraitant."</li>";
-                                }
+                                    echo "<li>Adresse : ".$donneesP[8]."</li>";
+                                    echo "<li>Lieu de naissance: ".$donneesP[9]."</li>";
+                                    echo "<li>Médecin traitant : ".$MedecinTraitant->fetch()[0]."</li>";
                             ?>
 
                         </div>
                         <div class="col-lg-5 infos4">
                             <?php 
-                                while ($ligne=$donneesP->fetch()){ 
-                                    echo "<li>Téléphone : ".$ligne[10]."</li>";
-                                    echo "<li>N° Sécurité sociale du Responsable légal : ".$ligne[2]."</li>";
-                                }
+                                    echo "<li>Téléphone : ".$donneesP[10]."</li>";
+                                    echo "<li>N° Sécurité sociale du Responsable légal : ".$donneesP[2]."</li>";
                             ?>
 
                         </div>
@@ -148,22 +141,11 @@ debSquelette();
                     <h3>Hospitalisation</h3>
                     <form action="../vue/consultation_patient.php" method="post">
 						<div class="row hosp">
-							<?php /*
+							<?php 
 								while($ligne=$hospitalisation->fetch()) {
-									echo '<div class="col-lg-3 col-md-6"><p>test</p><button name="hosp" type="submit" value="'.$ligne[0].'"><i class="fas fa-folder-open"></i></a></div>';
-								}*/
+									echo '<div class="col-lg-3 col-md-6"><p>blabla</p><button name="hosp" type="submit" value="'.$ligne[0].'"><i class="fas fa-folder-open"></i></a></div>';
+								}
 							?>
-							<div class="col-lg-3 col-md-6"><p>test</p><button name="hosp" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
-							<div class="col-lg-3 col-md-6"><p>test</p><button name="hosp" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
-							<div class="col-lg-3 col-md-6"><p>test</p><button name="hosp" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
-							<div class="col-lg-3 col-md-6"><p>test</p><button name="hosp" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
-							<div class="col-lg-3 col-md-6"><p>test</p><button name="hosp" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
-							<div class="col-lg-3 col-md-6"><p>test</p><button name="hosp" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
-							<div class="col-lg-3 col-md-6"><p>test</p><button name="hosp" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
-							<div class="col-lg-3 col-md-6"><p>test</p><button name="hosp" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
-							<div class="col-lg-3 col-md-6"><p>test</p><button name="hosp" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
-							<div class="col-lg-3 col-md-6"><p>test</p><button name="hosp" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
-							<div class="col-lg-3 col-md-6"><p>test</p><button name="hosp" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
 						</div>
 					</form>
 					<?php 	
@@ -174,23 +156,12 @@ debSquelette();
                     <h3>Actes <a style="background-color:transparent; text-decoration:none" href="../vue/consultation_patient.php">&#8617;</a></h3>
                     <form action="../vue/consultation_actes.php" method="post">
 						<div class="row hosp">
-							<?php /*
+							<?php 
+							    var_dump($actes);exit();
 								while($ligne=$actes->fetch()) {
 									echo '<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="'.$ligne[0].'"><i class="fas fa-folder-open"></i></a></div>';
-								}*/
+								}
 							?>
-							<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
-							<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
-							<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
-							<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
-							<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
-							<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
-							<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
-							<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
-							<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
-							<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
-							<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
-							<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="a"><i class="fas fa-folder-open"></i></a></div>
 						</div>
 					</form>
 					<?php
