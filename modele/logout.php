@@ -5,7 +5,7 @@ session_start();
 //empeêcher l'accès à la page sans s'être authentifié
 if (!(isset($_SESSION["user"]))){
     echo "<script language='javascript'>alert('Bien tenté.');</script>";
-    header("refresh:0;url=indexsteam.php");
+    header("refresh:0;url=../controleur/loginpage.php.php");
 }
 //On détruit la session
 session_unset();

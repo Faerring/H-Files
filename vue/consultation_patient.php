@@ -139,7 +139,7 @@ debSquelette();
 						unset($_POST['hosp']);
                     ?>
                     <h3>Hospitalisation</h3>
-                    <form action="../vue/consultation_patient.php" method="post">
+                    <form action="../controleur/consultation_patient.php" method="post">
 						<div class="row hosp">
 							<?php 
 								while($ligne=$hospitalisation->fetch()) {
@@ -153,11 +153,10 @@ debSquelette();
 					else {
 						unset($_POST['hosp']);
 						?>
-                    <h3>Actes <a style="background-color:transparent; text-decoration:none" href="../vue/consultation_patient.php">&#8617;</a></h3>
-                    <form action="../vue/consultation_actes.php" method="post">
+                    <h3>Actes <a style="background-color:transparent; text-decoration:none" href="../controleur/consultation_patient.php">&#8617;</a></h3>
+                    <form action="../controleur/consultation_actes.php" method="post">
 						<div class="row hosp">
 							<?php 
-							    var_dump($actes);exit();
 								while($ligne=$actes->fetch()) {
 									echo '<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="'.$ligne[0].'"><i class="fas fa-folder-open"></i></a></div>';
 								}

@@ -8,7 +8,7 @@ function active($current_page){
 function navbarMed() {
 	echo '
 					<li class="'.active("profil.php").'"><a href="../controleur/profil.php">Profil</a></li>
-					<li class="'.active("dmp.php").'"><a href="../controleur/dmp.php">Patients</a></li>
+					<li class="'.active("consultation_patient.php").'"><a href="../controleur/consultation_patient.php">Patients</a></li>
 					<li class="'.active("contact.php").'"><a href="../controleur/contact.php">Qui sommes nous ?</a></li>
 	';
 }

@@ -43,9 +43,10 @@ class execRequest {
 		$hospitalisations = $dbh->query($y);
 		return $hospitalisations;
 	}
-    public static function getActes($patientID, $hosp) {
-		$y = "SELECT IDActe FROM acte NATURAL JOIN affectation NATURAL JOIN hospitalisation WHERE UUID LIKE '".$patientID."' AND IDHosp LIKE ".$hosp;
+    public static function getActes($patientID, $hosp, $dbh) {
+		$y = "SELECT IDActe FROM acte NATURAL JOIN affectation NATURAL JOIN hospitalisation WHERE UUID LIKE '".$patientID."' AND IDHosp = ".$hosp;
 		$actes = $dbh->query($y);
+				
 		return $actes;
 	}
     public static function getAllergies($patientID,$dbh){
