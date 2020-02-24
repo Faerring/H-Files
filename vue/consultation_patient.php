@@ -29,15 +29,14 @@ debSquelette();
                         <div class="col-lg-5 infos">
                             <?php
 									$donneesP = $donneesP->fetch();
-                                    if ($donneesP[6] == 'Homme' || $donneesP[6] == 'Autre'){
+                                    if ($donneesP[5] == 'Homme' || $donneesP[5] == 'Autre'){
                                         echo "<img class = 'male_patient' src = '../img/male.png' alt = 'icon male'/>";
                                     }
                                     else {
                                         echo "<img class = 'female_patient' src = '../img/female.png' alt = 'icon female'/>";
                                     }
-                                    echo "<li>Nom : ".$donneesP[4]."</li>";
-                                    echo "<li>Date de naissance : ".$donneesP[7]."</li>";
-                                    echo "<li>N° Carte Vitale : ".$donneesP[3]."</li>";
+                                    echo "<li>Nom : ".$donneesP[3]."</li>";
+                                    echo "<li>Date de naissance : ".$donneesP[6]."</li>";
                                     echo "<li>Département : ".$depH->fetch()[0]."</li>";
 
                             ?>
@@ -46,7 +45,7 @@ debSquelette();
                         <div class="col-lg-5 infos2">
                             <br>
                             <?php
-                                    echo "<li>Prénom : ".$donneesP[5]."</li>";
+                                    echo "<li>Prénom : ".$donneesP[4]."</li>";
                                     echo "<li>N° Sécurité Sociale : ".$donneesP[1]."</li>";
                             ?>
 						</div>
@@ -118,16 +117,17 @@ debSquelette();
                         <h2>ADMINISTRATION</h2>
                         <div class="col-lg-offset-2 col-lg-5 infos3">
                             <?php 
-                                    echo "<li>Adresse : ".$donneesP[8]."</li>";
-                                    echo "<li>Lieu de naissance: ".$donneesP[9]."</li>";
+                                    echo "<li>Adresse : ".$donneesP[7]."</li>";
+                                    echo "<li>Lieu de naissance: ".$donneesP[8]."</li>";
                                     echo "<li>Médecin traitant : ".$MedecinTraitant->fetch()[0]."</li>";
                             ?>
 
                         </div>
                         <div class="col-lg-5 infos4">
                             <?php 
-                                    echo "<li>Téléphone : ".$donneesP[10]."</li>";
+                                    echo "<li>Téléphone : ".$donneesP[9]."</li>";
                                     echo "<li>N° Sécurité sociale du Responsable légal : ".$donneesP[2]."</li>";
+                                    echo "<li>N° de téléphone du Responsable légal : ".$donneesP[12]."</li>";
                             ?>
 
                         </div>
