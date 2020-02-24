@@ -8,7 +8,7 @@ function active($current_page){
 function navbarMed() {
 	echo '
 					<li class="'.active("profil.php").'"><a href="../controleur/profil.php">Profil</a></li>
-					<li class="'.active("dmp.php").'"><a href="../controleur/dmp.php">Patients</a></li>
+					<li class="'.active("consultation_patient.php").'"><a href="../controleur/consultation_patient.php">Patients</a></li>
 					<li class="'.active("contact.php").'"><a href="../controleur/contact.php">Qui sommes nous ?</a></li>
 	';
 }
@@ -37,7 +37,6 @@ function navbarSec() {
 }
 function navbarDefault() {
 	echo '
-					<li class="'.active("profil.php").'"><a href="../controleur/profil.php">Profil</a></li>
 					<li class="'.active("contact.php").'"><a href="../controleur/contact.php">Qui sommes nous ?</a></li>
 	';
 }
@@ -63,8 +62,8 @@ function navGenBottom() {
 		echo '
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-					  <li><a href="../controleur/profil.php"><span class="glyphicon glyphicon-user"></span> '.getNom().' '.getPrenom().'</a></li>
-					  <li><a href="../controleur/loginpage.php?dc=true"><span class="glyphicon glyphicon-log-in"></span> Se déconnecter</a></li>
+					  <li><a href="../controleur/profil.php"><span class="glyphicon glyphicon-user"></span> '.$_SESSION['user']->getNom().' '.$_SESSION['user']->getPrenom().' </a></li>
+					  <li><a href="../modele/logout.php"><span class="glyphicon glyphicon-log-out"></span> Se déconnecter</a></li>
 					</ul>
 				</div>
 			  </div>
@@ -75,8 +74,7 @@ function navGenBottom() {
 		echo '
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-					  <li><a href="../controleur/profil.php"><span class="glyphicon glyphicon-user"></span> Inconnu(e)</a></li>
-					  <li><a href="../controleur/loginpage.php?dc=true"><span class="glyphicon glyphicon-log-in"></span> Se déconnecter</a></li>
+					  <li><a href="../controleur/loginpage.php"><span class="glyphicon glyphicon-log-in"></span> Se connecter</a></li>
 					</ul>
 				</div>
 			  </div>
@@ -86,26 +84,29 @@ function navGenBottom() {
 }
 function viewNavBar(){
 	navGenTop();
+	
 	if(isset($_SESSION['user'])) {
-		if($_SESSION['user']->getProfession() == "Administrateur") {
+		$u = $_SESSION['user'];
+		if($u->getProfession() == "Administrateur") {
 			navbarAdmin();
 		}
-		if($_SESSION['user']->getProfession() == "Medecin") {
+		if($u->getProfession() == "Medecin") {	
 			navbarMed();
 		}
-		if($_SESSION['user']->getProfession() == "Infirmier") {
+		if($u->getProfession() == "Infirmier") {
 			navbarInf();
 		}
-		if($_SESSION['user']->getProfession() == "Secrétaire") {
+		if($u->getProfession() == "Secrétaire") {
 			navbarSec();
 		}
-		else {
+		if($u->getProfession() != ("Secrétaire" || "Medecin" || "Infirmier" || "Administrateur")) {
 			navbarDefault();
 		}
+		
 	}
 	else {
+		
 		echo '
-						<li class="'.active("profil.php").'"><a href="../controleur/profil.php">Profil</a></li>
 						<li class="'.active("contact.php").'"><a href="../controleur/contact.php">Qui sommes nous ?</a></li>
 		';
 	}

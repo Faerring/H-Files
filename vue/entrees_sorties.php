@@ -136,10 +136,10 @@ else {
 	<?php
 	finSquelette();
 	if (isset($_POST['confirmerA'])) {
-		addAffectattion();
+		execRequest::addAffectattion($dbh);
 	}
 	if (isset($_POST['confirmerM'])) {
-		updateAffectattion();
+		execRequest::updateAffectattion($dbh);
 	}
 }
 ?>
