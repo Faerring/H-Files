@@ -8,8 +8,12 @@ if(isset($_POST["nMdp"])){
   if (!empty($_POST["nMdp"])) {
     if($_POST["nMdp"] == $_POST["nMdp2"]){
       $id = getID();
-      $dbh->query("UPDATE Personnel SET motDePasse=SHA1(\"".$_POST["nMdp"]."\");");
-      header("location: index.php?nMdp=true");
+      if ($dbh != false) {
+        $dbh->query("UPDATE Personnel SET motDePasse=SHA1(\"".$_POST["nMdp"]."\");");
+      } else {
+        echo("<br>Connexion failed!");
+      }
+
     } else{
       $error=true;
     }

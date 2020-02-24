@@ -1,13 +1,18 @@
 <?php
     public function viewFile($patientID, $yourNode){
-        
-        
+
+
     }
 
     public function viewPData($patientID){
-            $y = "SELECT * FROM dmp_patient WHERE UUID LIKE ".$patientID;
-            $donneesP = $dbh->query($y);
-            return $donneesP;
+      if ($dbh != false) {
+        $y = "SELECT * FROM dmp_patient WHERE UUID LIKE ".$patientID;
+        $donneesP = $dbh->query($y);
+        return $donneesP;
+      } else {
+        return false;
+      }
+
     }
 
     function getAllergies($patientID){
@@ -15,7 +20,7 @@
         $donneesP = $dbh->query($y);
         return $donneesP;
     }
-    
+
     function getHospitalisation($patientID) {
 		$y = "SELECT IDHosp FROM Hospitalisation WHERE UUID LIKE ".$patientID;
 		$hospitalisations = $dbh->query($y);
