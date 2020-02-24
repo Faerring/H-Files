@@ -4,6 +4,8 @@ require("connexion.php");
 function isParent($parentNode, $childNode) {
   if ($dbh != false) {
     $req = $dbh -> query("SELECT IDNoeud FROM Noeud WHERE IDNoeud=$childNode;");
+  } else {
+    echo("<br>Connexion failed!");
   }
   if(count($req) == 0) {
     var_dump($req);
