@@ -19,7 +19,17 @@ function dirNameFromUUID($UUID)
 
 function AddHospitalisation($UUID,$date,$service)
 {
-    if(folderExist()){
+
+    $name = "";
+    $firstname = "";
+    try {
+        $info=execRequest::folderInfoFromNSS(execRequest::NssFromUUID($UUID));
+        $name = $info['nom'];
+        $firstname = $info['prenom'];;
+    }catch (PDOException $e){
+        echo '<h1> no folder found in database for '.$UUID.'</h1>';
+    }
+    if(folderExist($name,$firstname,$UUID)){
         mkdir('../patients/'.dirNameFromUUID($UUID).'/Hospitalisation du '.$date.' service - '.$service);
     }
 }
