@@ -52,8 +52,8 @@ debSquelette();
                     </div>
 					<div class="row">
                         <h2>ANTECEDENTS</h2>
-                            <div class="col-lg-4 tabAntecedentMedicaux">
-                                <table class="tabAntecedentMedicaux">
+                            <div class="col-lg-4 tabAntecedent">
+                                <table class="tabAntecedent">
                                     <thead>
                                         <tr>
                                             <th scope="col">Antécédents médicaux</th>
@@ -64,7 +64,7 @@ debSquelette();
                                             while($ligne=$a_medicaux->fetch()) {
                                                 echo "<tr>";
                                                 echo "<td>";
-                                                echo $ligne[0];
+                                                echo utf8_encode($ligne[0]);
                                                 echo "</td>";
                                                 echo "</tr>";
                                             }
@@ -72,8 +72,8 @@ debSquelette();
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="col-lg-4 tabAntecedentChirurgicaux">
-                                <table class="tabAntecedentChirurgicaux">
+                            <div class="col-lg-4 tabAntecedent">
+                                <table class="tabAntecedent">
                                     <thead>
                                         <tr>
                                             <th scope="col">Antécédents chirurgicaux</th>
@@ -84,7 +84,7 @@ debSquelette();
                                             while($ligne=$a_chirurgicaux->fetch()) {
                                                 echo "<tr>";
                                                 echo "<td>";
-                                                echo $ligne[0];
+                                                echo utf8_encode($ligne[0]);
                                                 echo "</td>";
                                                 echo "</tr>";
                                             }
@@ -92,8 +92,8 @@ debSquelette();
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="col-lg-4 tabAllergies">   
-                                <table class="tabAllergies">
+                            <div class="col-lg-4 tabAntecedent">   
+                                <table class="tabAntecedent">
                                     <thead>
                                         <tr>
                                             <th scope="col">Allergies</th>
@@ -104,7 +104,7 @@ debSquelette();
                                             while($ligne=$allergies->fetch()) {
                                                 echo "<tr>";
                                                 echo "<td>";
-                                                echo $ligne[0];
+                                                echo utf8_encode($ligne[0]);
                                                 echo "</td>";
                                                 echo "</tr>";
                                             }

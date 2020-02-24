@@ -252,22 +252,27 @@ div.active {
 	width: 20px;
 }
 
-.tabAntecedentMedicaux, .tabAntecedentChirurgicaux, .tabAllergies th, td {
+.tabAntecedent th, tabAntecedent td {
 	padding: 15px;
 	text-align: center;
-	border: 1px solid black;
 	letter-spacing: 0.5px;
-  }
+ }
+ 
+.tabAntecedent thead {
+	border-bottom: 1px solid black;
+}
 
-.tabAntecedentMedicaux, .tabAntecedentChirurgicaux, .tabAllergies{
+.tabAntecedent{
 	text-align: center;
 	width: 100%;
-	padding: 15px;
+	padding-right: 0!important;
+    padding-left: 0!important;
+    border-collapse: collapse;
 }  
-.tabAntecedentMedicaux, .tabAntecedentChirurgicaux, .tabAllergies tr:nth-child(even) {
+.tabAntecedent tr:nth-child(even) {
 	background-color: #ffffff;
 }
 
-.tabAntecedentMedicaux, .tabAntecedentChirurgicaux, .tabAllergies  tr:nth-child(odd) {
+.tabAntecedent tr:nth-child(odd) {
 	background-color: #c3f1ff;
 }	

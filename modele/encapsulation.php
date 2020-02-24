@@ -46,7 +46,6 @@ class execRequest {
     public static function getActes($patientID, $hosp, $dbh) {
 		$y = "SELECT IDActe FROM acte NATURAL JOIN affectation NATURAL JOIN hospitalisation WHERE UUID LIKE '".$patientID."' AND IDHosp = ".$hosp;
 		$actes = $dbh->query($y);
-
 		return $actes;
 	}
     public static function getAllergies($patientID,$dbh){
@@ -55,12 +54,12 @@ class execRequest {
         return $allergies;
     }
     public static function getAntecedentMedicaux($patientID,$dbh){
-      $y = "SELECT antecedent.nom FROM `antecedent` JOIN dmp_patient ON antecedent.UUID = dmp_patient.UUID WHERE type = 'Antécédents médicaux' AND dmp_patient.UUID LIKE  '".$patientID."'";
+      $y = "SELECT antecedent.nom FROM `antecedent` JOIN dmp_patient ON antecedent.UUID = dmp_patient.UUID WHERE type = 'Antecedents medicaux' AND dmp_patient.UUID LIKE  '".$patientID."'";
       $a_medicaux= $dbh->query($y);
       return $a_medicaux;
     }
     public static function getAntecedentChirurgicaux($patientID,$dbh){
-      $y = "SELECT antecedent.nom FROM `antecedent` JOIN dmp_patient ON antecedent.UUID = dmp_patient.UUID WHERE type = 'Antécédents chirurgicaux' AND dmp_patient.UUID LIKE  '".$patientID."'";
+      $y = "SELECT antecedent.nom FROM `antecedent` JOIN dmp_patient ON antecedent.UUID = dmp_patient.UUID WHERE type = 'Antecedents chirurgicaux' AND dmp_patient.UUID LIKE  '".$patientID."'";
       $a_chirurgicaux= $dbh->query($y);
       return $a_chirurgicaux;
     }
