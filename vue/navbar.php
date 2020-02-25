@@ -16,7 +16,7 @@ function navbarInf() {
 	echo '
 					<li class="'.active("profil.php").'"><a href="../controleur/profil.php">Profil</a></li>
 					<li class="'.active("dmp.php").'"><a href="../controleur/dmp.php">Patients</a></li>
-					<li class="'.active("entrees_sorties.php").'"><a href="../controleur/entreesortie.php">Entrées/Sorties</a></li>
+					<li class="'.active("entrees_sorties.php").'"><a href="../controleur/entrees_sorties.php">Entrées/Sorties</a></li>
 					<li class="'.active("contact.php").'"><a href="../controleur/contact.php">Qui sommes nous ?</a></li>
 	';
 }
