@@ -90,28 +90,30 @@ class execRequest {
 	/*---------------------------------------------------------------------------------------------------*/
 	/*---------------------------------------------------------------------------------------------------*/
 	//Page entrées/sorties
-	public static function getEntrees($dbh) {
+	public static function getEntrees($dbh,$noeud,$nomPers) {
 		$x = 'SELECT DISTINCT dmp_patient.nom, dmp_patient.prenom, DateAffec, medecintraitant.nom FROM personnel, medecintraitant, dmp_patient NATURAL JOIN hospitalisation NATURAL JOIN affectation
-	WHERE (dmp_patient.IDNoeud = '.$noeud.') AND (personnel.nom = '.$nomPers.') AND (affectation.DateAffec IN (SELECT DateAffec FROM affectation WHERE DateAffec >= (SELECT DATE_SUB(NOW(), INTERVAL 7 DAY))))
+	WHERE (dmp_patient.IDNoeud = '.$noeud.') AND (personnel.nom = "'.$nomPers.'") AND (affectation.DateAffec IN (SELECT DateAffec FROM affectation WHERE DateAffec >= (SELECT DATE_SUB(NOW(), INTERVAL 7 DAY))))
 	AND (medecintraitant.IDMedTraitant = dmp_patient.IDMedTraitant)';
 		$result = $dbh->query($x);
 		return $result;
 	}
-	public static function getSorties($dbh) {
+	public static function getSorties($dbh,$noeud,$nomPers) {
 		$x = 'SELECT DISTINCT dmp_patient.nom, dmp_patient.prenom, DateFinAffec, medecintraitant.nom FROM personnel, medecintraitant, dmp_patient NATURAL JOIN hospitalisation NATURAL JOIN affectation
-	WHERE (dmp_patient.IDNoeud = '.$noeud.') AND (personnel.nom '.$nomPers.') AND (affectation.DateFinAffec IN (SELECT DateFinAffec FROM affectation WHERE DateFinAffec >= (SELECT DATE_SUB(NOW(), INTERVAL 7 DAY))))
+	WHERE (dmp_patient.IDNoeud = '.$noeud.') AND (personnel.nom = "'.$nomPers.'") AND (affectation.DateFinAffec IN (SELECT DateFinAffec FROM affectation WHERE DateFinAffec >= (SELECT DATE_SUB(NOW(), INTERVAL 7 DAY))))
 	AND (medecintraitant.IDMedTraitant = dmp_patient.IDMedTraitant)';
 		$result = $dbh->query($x);
 		return $result;
 	}
-	public static function requestAdd($nom,$prenom,$date,$dbh) {
-		$x = 'INSERT INTO affectation VALUES("",NULL,'.$date.',(SELECT IDNoeud FROM personnel WHERE nom = '.$nomPers.'),(SELECT IDHosp FROM hospitalisation NATURAL JOIN dmp_patient WHERE nom LIKE '.$nom.' AND prenom LIKE '.$prenom.'))';
+	public static function requestAdd($nom,$prenom,$date,$dbh,$noeud,$nomPers) {
+		$x = 'INSERT INTO affectation VALUES("",NULL,'.$date.',(SELECT IDNoeud FROM personnel WHERE nom = "'.$nomPers.'"),(SELECT IDHosp FROM hospitalisation NATURAL JOIN dmp_patient WHERE nom LIKE "'.$nom.'" AND prenom LIKE "'.$prenom.'"))';
 		$result = $dbh->query($x);
+		var_dump($x);
+		exit();
 		return $result;
 	}
 	public static function requestUpdate($nom,$prenom,$date,$dbh){
-		$x = 'SELECT IDAffec FROM affectation NATURAL JOIN hospitalisation NATURAL JOIN dmp_patient WHERE UUID = (SELECT UUID from dmp_patient WHERE nom LIKE '.$nom.' AND prenom LIKE '.$prenom.') AND DateFinAffec IS NULL';
-		$result = $dbh->query($x);
+		$x = 'SELECT IDAffec FROM affectation NATURAL JOIN hospitalisation NATURAL JOIN dmp_patient WHERE UUID = (SELECT UUID from dmp_patient WHERE nom LIKE "'.$nom.'" AND prenom LIKE "'.$prenom.'") AND DateFinAffec IS NULL';
+		$result = $dbh->query($x)->fetch();
 		$y = 'UPDATE affectation SET DateFinAffec = '.$date.' WHERE IDAffec = '.$result;
 		$result2 = $dbh->query($y);
 		return $result2;
