@@ -104,17 +104,15 @@ class execRequest {
 		$result = $dbh->query($x);
 		return $result;
 	}
-	public static function requestAdd($nom,$prenom,$date,$dbh,$noeud,$nomPers) {
-		$x = 'INSERT INTO affectation VALUES("",NULL,'.$date.',(SELECT IDNoeud FROM personnel WHERE nom = "'.$nomPers.'"),(SELECT IDHosp FROM hospitalisation NATURAL JOIN dmp_patient WHERE nom LIKE "'.$nom.'" AND prenom LIKE "'.$prenom.'"))';
+	public static function requestAdd($nom,$prenom,$date,$dbh,$nomPers) {
+		$x = 'INSERT INTO affectation VALUES("",NULL,"'.$date.'",(SELECT IDNoeud FROM personnel WHERE nom = "'.$nomPers.'"),(SELECT IDHosp FROM hospitalisation NATURAL JOIN dmp_patient WHERE nom LIKE "'.$nom.'" AND prenom LIKE "'.$prenom.'"))';
 		$result = $dbh->query($x);
-		var_dump($x);
-		exit();
 		return $result;
 	}
 	public static function requestUpdate($nom,$prenom,$date,$dbh){
 		$x = 'SELECT IDAffec FROM affectation NATURAL JOIN hospitalisation NATURAL JOIN dmp_patient WHERE UUID = (SELECT UUID from dmp_patient WHERE nom LIKE "'.$nom.'" AND prenom LIKE "'.$prenom.'") AND DateFinAffec IS NULL';
 		$result = $dbh->query($x)->fetch();
-		$y = 'UPDATE affectation SET DateFinAffec = '.$date.' WHERE IDAffec = '.$result;
+		$y = 'UPDATE affectation SET DateFinAffec = "'.$date.'" WHERE IDAffec = '.$result[0];
 		$result2 = $dbh->query($y);
 		return $result2;
 	}

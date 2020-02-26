@@ -28,12 +28,6 @@ debSquelette();
 						<td>Date</td>
 						<td>Médecin traitant</td>
 					</tr>
-					<tr>
-						<td>Dupond</td>
-						<td>Michel</td>
-						<td>2020-02-05</td>
-						<td>Felro</td>
-					</tr>
 					<?php
 					while($ligne=$entrees->fetch()) {
 						echo "<tr>";
@@ -59,12 +53,6 @@ debSquelette();
 						<td>Prénom</td>
 						<td>Date</td>
 						<td>Médecin traitant</td>
-					</tr>
-					<tr>
-						<td>Dupond</td>
-						<td>Michel</td>
-						<td>2020-02-08</td>
-						<td>Felro</td>
 					</tr>
 					<?php
 					while($ligne2=$sorties->fetch()) {
@@ -103,7 +91,9 @@ debSquelette();
 							<label class="labES">Date d'affectation :</label>
 							<input type="date" name="date"/>
 						</p>
-						<input type="submit" name="confirmerA" value="Confirmer">
+						<input type="submit" name="confirmerA">
+						<br>
+						<br>
 					</form>
 				</div>
 				<div class="col-lg-6" id="modify">
@@ -121,7 +111,7 @@ debSquelette();
 							<label class="labES">Date de fin d'affectation :</label>
 							<input type="date" name="date"/>
 						</p>
-						<input type="submit" name="confirmerM" value="Confirmer">
+						<input type="submit" name="confirmerM">
 					</form>
 				</div>
 			</div>

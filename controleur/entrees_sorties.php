@@ -9,15 +9,15 @@ if (!(isset($_SESSION['user']))){
     echo "<script language='javascript'>alert('Bien tenté.');</script>";
     header("refresh:0;url=../controleur/loginpage.php");
 }
-if (isset($_POST['confirmerA'])) {
-	execRequest::addAffectattion($dbh);
-}
-if (isset($_POST['confirmerM'])) {
-	execRequest::updateAffectattion($dbh);
-}
 $noeud = $_SESSION['user']->getIDNoeud();
 $nomPers = $_SESSION['user']->getNom();
 
+if (isset($_POST['confirmerA'])) {
+	addAffectation($dbh,$nomPers);
+}
+if (isset($_POST['confirmerM'])) {
+	updateAffectation($dbh);
+}
 $entrees = execRequest::getEntrees($dbh,$noeud,$nomPers);
 $sorties = execRequest::getSorties($dbh,$noeud,$nomPers);
 require('../vue/entrees_sorties.php');
