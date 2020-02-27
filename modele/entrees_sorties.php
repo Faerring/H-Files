@@ -6,10 +6,10 @@ function addAffectation($dbh,$nomPers){
 	
 	$result = execRequest::requestAdd($nom,$prenom,$date,$dbh,$nomPers);
 	if ($result->rowCount() != 0) {
-		echo "L'affectation a bien été ajoutée";
+		echo "<script language='javascript'>alert('L'affectation a bien été ajoutée');</script>";
 		return $result;
 	}
-	echo "L'affectation n'a pas été ajoutée";
+	echo "<script language='javascript'>alert('L'affectation n'a pas été ajoutée');</script>";
 	return False;
 }
 
@@ -20,10 +20,10 @@ function updateAffectation($dbh){
 	
 	$result = execRequest::requestUpdate($nom,$prenom,$date,$dbh);
 	if ($result->rowCount() != 0) {
-		echo "L'affectation a été modifiée";
+		echo "<script language='javascript'>alert('L'affectation a bien été modifiée');</script>";
 		return $result;
 	}
-	echo "L'affectation n'a pas été modifiée";
+	echo "<script language='javascript'>alert('L'affectation n'a pas été modifée');</script>";
 	return False;
 }
 ?>
