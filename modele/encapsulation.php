@@ -78,6 +78,21 @@ class execRequest {
 		$const = $dbh->query($y);
 		return $const;
 	}
+	public static function getUUID($numSecu,$dbh) {
+		$y = "SELECT UUID FROM dmp_patient WHERE numSecu = '".$numSecu."'";
+		$const = $dbh->query($y);
+		return $const;
+	}
+	public static function updatePersonalInfo($UUID, $field_value, $field, $dbh) {
+		$y = "UPDATE dmp_patient SET ".$field."='".$field_value."' WHERE UUID='".$UUID."'";
+		$res = $dbh->query($y);
+		return $res;
+	}
+	public static function updateConst($UUID, $field_value, $field, $dbh) {
+		$y = "UPDATE constantes SET ".$field."='".$field_value."' WHERE UUID='".$UUID."'";
+		$res = $dbh->query($y);
+		return $res;
+	}
 	/*---------------------------------------------------------------------------------------------------*/
 	/*---------------------------------------------------------------------------------------------------*/
 	//Page de connexion
