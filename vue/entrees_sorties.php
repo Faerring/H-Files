@@ -83,6 +83,10 @@ debSquelette();
 							<label class="labES">Date d'affectation :</label>
 							<input type="date" name="date"/>
 						</p>
+						<p>
+							<label class="labES">Heure :</label>
+							<input type="time" name="temps"/>
+						</p>
 						<input type="submit" name="confirmerA">
 						<br>
 						<br>
@@ -102,6 +106,10 @@ debSquelette();
 						<p>
 							<label class="labES">Date de fin d'affectation :</label>
 							<input type="date" name="date"/>
+						</p>
+						<p>
+							<label class="labES">Heure :</label>
+							<input type="time" name="temps"/>
 						</p>
 						<input type="submit" name="confirmerM">
 					</form>
