@@ -119,9 +119,11 @@ class execRequest {
 		$result = $dbh->query($x);
 		return $result;
 	}
-	public static function requestAdd($nom,$prenom,$date,$dbh,$nomPers) {
+	public static function requestAdd($nom,$prenom,$date,$dbh,$nomPers,$noeud) {
 		$x = 'INSERT INTO affectation VALUES("",NULL,"'.$date.'",(SELECT IDNoeud FROM personnel WHERE nom = "'.$nomPers.'"),(SELECT IDHosp FROM hospitalisation NATURAL JOIN dmp_patient WHERE nom LIKE "'.$nom.'" AND prenom LIKE "'.$prenom.'"))';
 		$result = $dbh->query($x);
+		$y = 'UPDATE dmp_patient SET IDNoeud = "'.$noeud.'" WHERE nom LIKE "'.$nom.'" AND prenom LIKE "'.$prenom.'"';
+		$result2 = $dbh->query($y);
 		return $result;
 	}
 	public static function requestUpdate($nom,$prenom,$date,$dbh){

@@ -13,7 +13,7 @@ $noeud = $_SESSION['user']->getIDNoeud();
 $nomPers = $_SESSION['user']->getNom();
 
 if (isset($_POST['confirmerA'])) {
-	addAffectation($dbh,$nomPers);
+	addAffectation($dbh,$nomPers,$noeud);
 }
 if (isset($_POST['confirmerM'])) {
 	updateAffectation($dbh);

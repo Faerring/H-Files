@@ -1,10 +1,10 @@
 <?php
-function addAffectation($dbh,$nomPers){
+function addAffectation($dbh,$nomPers,$noeud){
 	$nom = $_POST['nom'];
 	$prenom = $_POST['prenom'];
 	$date = $_POST['date'];
 	
-	$result = execRequest::requestAdd($nom,$prenom,$date,$dbh,$nomPers);
+	$result = execRequest::requestAdd($nom,$prenom,$date,$dbh,$nomPers,$noeud);
 	if ($result->rowCount() != 0) {
 		echo "<script language='javascript'>alert('L'affectation a bien été ajoutée');</script>";
 		return $result;
