@@ -10,7 +10,7 @@ debSquelette();
 		</ul>
 
 		<div class="tab-content">
-			<div id="menu1" class="tab-pane fade in active">
+			<div id="menu1" class="tab-pane fade in active tableaux">
 				<h3>Entrées patients</h3>
 				<table class="tabES">
 					<tr>
@@ -67,7 +67,7 @@ debSquelette();
 				<br>
 			</div>
 			
-			<div id="menu2" class="tab-pane fade">
+			<div id="menu2" class="tab-pane fade modif">
 				<div class="col-lg-6" id="add">
 					<h3>Ajouter une nouvelle affectation :</h3>
 					<form method="POST" action="entrees_sorties.php">
