@@ -15,7 +15,7 @@ $nomPers = $_SESSION['user']->getNom();
 if (isset($_POST['confirmerA'])) {
 	$affectation = addAffectation($dbh,$nomPers,$noeud);
 	if ($affectation == False) {
-		echo "<script language='javascript'>alert('Une affectation n'a pas été ajoutée');</script>";
+		echo "<script language='javascript'>alert('Erreur, veuillez réessayer');</script>";
 	}
 	else {
 		echo "<script language='javascript'>alert('Une affectation a bien été ajoutée');</script>";
@@ -24,7 +24,7 @@ if (isset($_POST['confirmerA'])) {
 if (isset($_POST['confirmerM'])) {
 	$update = updateAffectation($dbh);
 	if ($update == False) {
-		echo "<script language='javascript'>alert('Une affectation n'a pas été modifiée');</script>";
+		echo "<script language='javascript'>alert('Erreur, veuillez réessayer');</script>";
 	}
 	else {
 		echo "<script language='javascript'>alert('Une affectation a bien été modifiée');</script>";

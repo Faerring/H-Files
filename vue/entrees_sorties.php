@@ -37,6 +37,7 @@ debSquelette();
 						echo "</tr>";
 					}?>
 				</table>
+				<br>
 				<h3>Sorties patients</h3>
 				<table class="tabES">
 					<tr>

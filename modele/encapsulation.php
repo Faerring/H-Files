@@ -120,8 +120,6 @@ class execRequest {
 		return $result;
 	}
 	public static function requestAdd($nom,$prenom,$date,$dbh,$nomPers,$noeud) {
-		$z = 'SELECT * FROM dmp_patient WHERE nom LIKE "'.$nom.'" AND prenom LIKE "'.$prenom.'"';
-		$result3 = $dbh->query($z);
 		var_dump($result3);exit();
 		$x = 'INSERT INTO affectation VALUES("",NULL,"'.$date.'",(SELECT IDNoeud FROM personnel WHERE nom = "'.$nomPers.'"),(SELECT IDHosp FROM hospitalisation NATURAL JOIN dmp_patient WHERE nom LIKE "'.$nom.'" AND prenom LIKE "'.$prenom.'"))';
 		$result = $dbh->query($x);
@@ -135,6 +133,11 @@ class execRequest {
 		$y = 'UPDATE affectation SET DateFinAffec = "'.$date.'" WHERE IDAffec = '.$result[0];
 		$result2 = $dbh->query($y);
 		return $result2;
+	}
+	public static function findPatient($nom,$prenom,$dbh) {
+		$x = 'SELECT * FROM dmp_patient WHERE nom LIKE "'.$nom.'" AND prenom LIKE "'.$prenom.'"';
+		$result = $dbh->query($x)->fetch();
+		return $result;
 	}
 	/*---------------------------------------------------------------------------------------------------*/
 
