@@ -2,17 +2,8 @@
 include("SqueletteDePage.php");
 debSquelette();
 ?>
-<div id="arbo" class="row">
-	<div class="form-group">
-		<div class="input-group">
-			<div class="input-group-addon"><i class="fa fa-search"></i></div>
-				<input type="text" class="form-control" placeholder="Nom du patient">
-		</div>
-	</div>
-</div>
 <div class="row">
-	<div class="col-lg-3">Arborescence de l'APHP</div>
-	<div class="col-lg-offset-1 col-lg-8">
+	<div class="col-lg-offset-1 col-lg-10">
 		<ul class="nav nav-tabs">
 			<li class="active"><a data-toggle="tab" href="#menu1">Consulter les entrées et sorties</a></li>
 			<li><a data-toggle="tab" href="#menu2">Ajouter ou modifier une affectation</a></li>

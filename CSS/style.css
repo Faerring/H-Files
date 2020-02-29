@@ -210,7 +210,8 @@ div.active {
 /* Julien */
 .tabES {
     border-collapse: collapse;
-    width:500px
+    width:500px;
+    margin: 0 auto;
 }
 .tabES td {
     border: 1px solid black;
@@ -221,6 +222,12 @@ div.active {
 }
 .labES {
 	width:250px;
+}
+#menu1 {
+	text-align:center;
+}
+#menu2 {
+	text-align:center;
 }
 .fa-folder-open {
 	font-size:170px;

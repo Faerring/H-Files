@@ -32,7 +32,7 @@ function middleDoubleDiv() { ?>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-lg-3">Arborescence de l'APHP</div>
+					<div class="col-lg-3">Recherche de patients</div>
 					<div class="col-lg-offset-1 col-lg-8">
 						<ul class="nav nav-tabs">
 							<li class="active"><a data-toggle="tab" href="#menu1">Menu 1</a></li>
