@@ -18,10 +18,11 @@ debSquelette();
                 <li class="active"><a data-toggle="tab" href="#menu1">Données générales</a></li>
                 <li><a data-toggle="tab" href="#menu2">Hospitalisation</a></li>
 				<li><a data-toggle="tab" href="#menu3">Constantes</a></li>
-                <li><a href="../controleur/modification_dmp.php">Editer DMP</a></li>
+                <li><a href="../vue/modif_dmp.php">Editer DMP</a></li>
             </ul>
 			<div class="tab-content">
                 <div id="menu1" class="tab-pane fade in active">
+                  <form method="post">
                     <div class="row">
                         <div class="col-lg-2 photo">
                             <img class = "img_patient" src = "../img/profil_patient.jpg" alt = "Photo profil patient">
@@ -40,7 +41,7 @@ debSquelette();
                                     echo "<li>Département : ".$depH->fetch()[0]."</li>";
 
                             ?>
-                           
+
                         </div>
                         <div class="col-lg-5 infos2">
                             <br>
@@ -92,7 +93,7 @@ debSquelette();
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="col-lg-4 tabAntecedent">   
+                            <div class="col-lg-4 tabAntecedent">
                                 <table class="tabAntecedent">
                                     <thead>
                                         <tr>
@@ -116,39 +117,61 @@ debSquelette();
                     <div class="row">
                         <h2>ADMINISTRATION</h2>
                         <div class="col-lg-offset-2 col-lg-5 infos3">
-                            <?php 
-                                    echo "<li>Adresse : ".$donneesP[7]."</li>";
+                            <?php
                                     echo "<li>Lieu de naissance: ".$donneesP[8]."</li>";
                                     echo "<li>Médecin traitant : ".$MedecinTraitant->fetch()[0]."</li>";
+                                    if ($editable == false) {
+                                        echo "<li>Adresse : ".$donneesP[7]."</li>";
+                                    } else {
+                                      echo "<input id=\"adresse\" name=\"adresse\" type=\"text\" placeholder=\"Adresse\"><br>";
+                                    }
+
                             ?>
 
                         </div>
                         <div class="col-lg-5 infos4">
-                            <?php 
-                                    echo "<li>Téléphone : ".$donneesP[9]."</li>";
-                                    echo "<li>N° Sécurité sociale du Responsable légal : ".$donneesP[2]."</li>";
-                                    echo "<li>N° de téléphone du Responsable légal : ".$donneesP[12]."</li>";
+
+                            <?php
+                            if ($editable == false) {
+                                echo "<li>Téléphone : ".$donneesP[9]."</li>";
+                                echo "<li>N° Sécurité sociale du Responsable légal : ".$donneesP[2]."</li>";
+                                echo "<li>N° de téléphone du Responsable légal : ".$donneesP[12]."</li>";
+                            } else {
+                              echo "<input id=\"telephone\" name=\"telephone\" type=\"text\" placeholder=\"Téléphone\"><br>";
+                              echo "<input id=\"secsoc_responsable\" name=\"numSecuRepLegal\" type=\"text\" placeholder=\"N° Sécurité sociale du Responsable légal\"><br>";
+                              echo "<input id=\"tel_responsable\" name=\"numRespLegal\" type=\"text\" placeholder=\"N° de téléphone du Responsable légal\">";
+                            }
                             ?>
+                              <?php
+                                if ($editable == false) {
+                                  echo("<input type=\"submit\" name=\"edit\" value=\"Modifier\">");
+                                } else {
+                                  echo("<input type=\"hidden\" name=\"numSecu\" value=\"".$donneesP[1]."\">");
+                                  echo("<input type=\"submit\" name=\"endEdit\" value=\"Envoyer\">");
+                                }
+                              ?>
+
 
                         </div>
-                    </div>  
+                    </div>
+                    </form>
                 </div>
                 <div id="menu2" class="tab-pane fade">
-                    <?php 
+                    <?php
                     if(!isset($_POST['hosp'])) {
 						unset($_POST['hosp']);
                     ?>
                     <h3>Hospitalisation</h3>
                     <form action="../controleur/consultation_patient.php" method="post">
 						<div class="row hosp">
-							<?php 
+							<?php
 								while($ligne=$hospitalisation->fetch()) {
 									echo '<div class="col-lg-3 col-md-6"><p>blabla</p><button name="hosp" type="submit" value="'.$ligne[0].'"><i class="fas fa-folder-open"></i></a></div>';
 								}
 							?>
 						</div>
 					</form>
-					<?php 	
+					<?php
 					}
 					else {
 						unset($_POST['hosp']);
@@ -156,7 +179,7 @@ debSquelette();
                     <h3>Actes <a style="background-color:transparent; text-decoration:none" href="../controleur/consultation_patient.php">&#8617;</a></h3>
                     <form action="../controleur/consultation_actes.php" method="post">
 						<div class="row hosp">
-							<?php 
+							<?php
 								while($ligne=$actes->fetch()) {
 									echo '<div class="col-lg-3 col-md-6"><p>test</p><button name="acte" type="submit" value="'.$ligne[0].'"><i class="fas fa-folder-open"></i></a></div>';
 								}
@@ -168,23 +191,82 @@ debSquelette();
 					?>
                 </div>
 				<div id="menu3" class="tab-pane fade" style="padding:0 20px">
+          <form method="post">
 					<div class="row">
-						<p>Editer les constantes</p>
+
 						<div class="const">
-							<p><?php echo date("j/n/Y");?></p>  
-							<p>Heure de prise</p>  
-							<p><?php echo $const[0]; ?></p>
+              <br>
+							<p><?php echo date("j/n/Y");?></p>
+							<p>Heure de prise</p>
+							<p>
+                <?php
+                if ($editable == false) {
+                  echo $const[0];
+                } else {
+                  echo "<input id=\"heure_prise\" name=\"Heure\" type=\"text\" placeholder=\"Heure de prise\"><br>";
+                }
+                ?></p>
 						</div>
 					</div>
 					<hr style="margin-left: -20px;">
 					<div class="row">
 						<div class="const">
-							<p>Fréquence cardiaque : <?php echo $const[1] ?></p>
-							<p>Saturation : <?php echo $const[2]; ?></p>
+							<p>Fréquence cardiaque :
+                <?php
+                if ($editable == false) {
+                  echo $const[1];
+                } else {
+                  echo "<input id=\"freq_cardiaque\" name=\"FC\" type=\"text\" placeholder=\"Fréquence cardiaque\"><br>";
+                }
+               ?></p>
+							<p>Saturation :
+                <?php
+                if ($editable == false) {
+                  echo $const[2];
+                } else {
+                  echo "<input id=\"saturation\" name=\"Saturation\" type=\"text\" placeholder=\"Saturation\"><br>";
+                }
+                ?></p>
 						</div>
-						<div class="const"><p>Tension artérielle : <?php echo $const[3] ?></p>  <p>Température : <?php echo $const[4] ?></p></div>
-						<p>Observation <?php echo $const[5]; ?></p>
+						<div class="const"><p>Tension artérielle :
+              <?php
+              if ($editable == false) {
+                echo $const[3];
+              } else {
+                echo "<input id=\"tension_art\" name=\"TA\" type=\"text\" placeholder=\"Tension artérielle\"><br>";
+              }
+              ?></p>
+              <p>Température :
+                <?php
+                if ($editable == false) {
+                  echo $const[4];
+                } else {
+                  echo "<input id=\"temperature\" name=\"Temp\" type=\"text\" placeholder=\"Température\"><br>";
+                }
+                ?></p>
+              </div>
+						<p>Observation :
+              <?php
+              if ($editable == false) {
+                echo $const[5];
+              } else {
+                echo "<input id=\"observation\" name=\"Observation\" type=\"text\" placeholder=\"Observation\"><br>";
+              }
+              ?></p>
+
+                <?php
+                  if ($editable == false) {
+                    echo("<input type=\"submit\" name=\"edit\" value=\"Modifier\">");
+                  } else {
+                    echo("<input type=\"hidden\" name=\"numSecu\" value=\"".$donneesP[1]."\">");
+                    echo("<input type=\"submit\" name=\"endEdit\" value=\"Envoyer\">");
+                  }
+                ?>
+              </form>
 					</div>
+          <div class="row">
+
+          </div>
 				</div>
 			</div>
         </div>

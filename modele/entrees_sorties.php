@@ -1,15 +1,17 @@
 <?php
-function addAffectation($dbh,$nomPers){
+function addAffectation($dbh,$nomPers,$noeud){
 	$nom = $_POST['nom'];
 	$prenom = $_POST['prenom'];
 	$date = $_POST['date'];
+	$time = $_POST['temps'];
 	
-	$result = execRequest::requestAdd($nom,$prenom,$date,$dbh,$nomPers);
-	if ($result->rowCount() != 0) {
-		echo "<script language='javascript'>alert('L'affectation a bien été ajoutée');</script>";
-		return $result;
+	$patient = execRequest::findPatient($nom,$prenom,$dbh);
+	if ($patient != false) {
+		$result = execRequest::requestAdd($nom,$prenom,$date,$time,$dbh,$nomPers,$noeud);
+		if ($result->rowCount() != 0) {
+			return $result;
+		}
 	}
-	echo "<script language='javascript'>alert('L'affectation n'a pas été ajoutée');</script>";
 	return False;
 }
 
@@ -17,13 +19,17 @@ function updateAffectation($dbh){
 	$nom = $_POST['nom'];
 	$prenom = $_POST['prenom'];
 	$date = $_POST['date'];
+	$time = $_POST['temps'];
 	
-	$result = execRequest::requestUpdate($nom,$prenom,$date,$dbh);
-	if ($result->rowCount() != 0) {
-		echo "<script language='javascript'>alert('L'affectation a bien été modifiée');</script>";
-		return $result;
+	$patient = execRequest::findPatient($nom,$prenom,$dbh);
+	if ($patient != false) {
+		$result = execRequest::requestUpdate($nom,$prenom,$date,$time,$dbh);
+		if ($result != NULL) {
+			if ($result->rowCount() != 0) {
+				return $result;
+			}
+		}
 	}
-	echo "<script language='javascript'>alert('L'affectation n'a pas été modifée');</script>";
 	return False;
 }
 ?>

@@ -13,10 +13,22 @@ $noeud = $_SESSION['user']->getIDNoeud();
 $nomPers = $_SESSION['user']->getNom();
 
 if (isset($_POST['confirmerA'])) {
-	addAffectation($dbh,$nomPers);
+	$affectation = addAffectation($dbh,$nomPers,$noeud);
+	if ($affectation == False) {
+		echo "<script language='javascript'>alert('Erreur, veuillez réessayer');</script>";
+	}
+	else {
+		echo "<script language='javascript'>alert('Une affectation a bien été ajoutée');</script>";
+	}
 }
 if (isset($_POST['confirmerM'])) {
-	updateAffectation($dbh);
+	$update = updateAffectation($dbh);
+	if ($update == False) {
+		echo "<script language='javascript'>alert('Erreur, veuillez réessayer');</script>";
+	}
+	else {
+		echo "<script language='javascript'>alert('Une affectation a bien été modifiée');</script>";
+	}
 }
 $entrees = execRequest::getEntrees($dbh,$noeud,$nomPers);
 $sorties = execRequest::getSorties($dbh,$noeud,$nomPers);
