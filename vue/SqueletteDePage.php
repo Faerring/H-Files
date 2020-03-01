@@ -11,10 +11,12 @@ function debSquelette() { ?>
 			<title>H-Files</title>
 			<link rel="stylesheet" type="text/css" href="../CSS/style.css">
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+            <link rel="stylesheet" href="../CSS/bootstrap-tooltip-custom-class.css" media="all" />
 			<link rel="shortcut icon" href="https://www.aphp.fr/sites/default/files/favico.png" type="image/png"/>
 			<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+			<script src="../JS/jquery-3.4.1.min.js"></script>
 			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+            <script src="../JS/bootstrap-tooltip-custom-class.js"></script>
 		</head>
 		<body>
 			<?php viewNavBar(); ?>

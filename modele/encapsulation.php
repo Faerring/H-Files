@@ -150,7 +150,18 @@ class execRequest {
 		return $dbh->query($x);
 	}
 
+	public static function getNodesID($dbh)
+	{
+		$x = 'SELECT `IDNoeud` FROM `noeud`';
+		return $dbh->query($x);
+	}
+
     /*---------------------------------------------------------------------------------------------------*/
+    public static function getMedTraitant(PDO $dbh)
+    {
+		$x = 'SELECT `IDMedTraitant`,`nom` FROM `medecintraitant` ';
+		return $dbh->query($x);
+    }
 }
 
 ?>

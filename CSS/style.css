@@ -1,3 +1,10 @@
+/*loris*/
+#newpatient{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+/*^loris^*/
 @font-face {
 	font-family:"Anton";
 	src:url("../Fonts/Anton/Anton.ttf");
@@ -275,4 +282,4 @@ div.active {
 
 .tabAntecedent tr:nth-child(odd) {
 	background-color: #c3f1ff;
-}	
+}
