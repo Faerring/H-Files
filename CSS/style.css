@@ -1,10 +1,3 @@
-/*loris*/
-#newpatient{
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
-
-/*^loris^*/
 @font-face {
 	font-family:"Anton";
 	src:url("../Fonts/Anton/Anton.ttf");
@@ -25,39 +18,33 @@ h1, h2, h3, h4, h5, h6 {
 	font-family: Anton Regular!important;
 	color:black!important;
 }
-
 #newPWDcontainer {
 	width: 100%;
 	text-align: center;
 	vertical-align: middle;
 }
-
 #newPasswdForm {
 	padding-left: 40px;
 	padding-right: 40px;
 	border: 1px solid black;
 	background-color: #93C5FC;
 	display: inline-block;
-  cursor: pointer;
-  width: 600px;
+	cursor: pointer;
+	width: 600px;
 }
-
 p {
 	font-family: Merriweather Regular;
 	color:black;
 }
-
 a {
 	font-family: Merriweather Regular;
 	color:black;
 }
-
 @media (min-width:1170px) {
 	#arbo .form-control {
 		width:23.5%!important;
 	}
 }
-
 @media (min-width: 1200px) {
 	.container {
 		width: 95%!important;
@@ -148,7 +135,6 @@ nav {
     background-image: linear-gradient(to right, #1A2980 0%, #26D0CE 51%, #1A2980 100%);
 }
 .btnSubmit:hover { background-position: right center; }
-
 #formSubmit {
 	text-align: right!important;
 	margin-top:3rem;
@@ -261,21 +247,17 @@ div.active {
 	width: 150px;
 	margin-top: 50px;
 }
-
 .male_patient, .female_patient{
 	width: 20px;
 }
-
 .tabAntecedent th, tabAntecedent td {
 	padding: 15px;
 	text-align: center;
 	letter-spacing: 0.5px;
- }
- 
+}
 .tabAntecedent thead {
 	border-bottom: 1px solid black;
 }
-
 .tabAntecedent{
 	text-align: center;
 	width: 100%;
@@ -286,7 +268,13 @@ div.active {
 .tabAntecedent tr:nth-child(even) {
 	background-color: #ffffff;
 }
-
 .tabAntecedent tr:nth-child(odd) {
 	background-color: #c3f1ff;
 }
+
+/*loris*/
+#newpatient{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+

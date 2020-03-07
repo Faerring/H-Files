@@ -179,6 +179,7 @@ class execRequest {
 		return $dbh->query($x);
 	}
 
+    /*---------------------------------------------------------------------------------------------------*/
 	public static function getNodesID($dbh)
 	{
 		$x = 'SELECT `IDNoeud` FROM `noeud`';
