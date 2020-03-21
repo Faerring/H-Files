@@ -39,7 +39,7 @@ class execRequest {
 		return $donneesP;
     }
     public static function getHospitalisation($patientID,$dbh) {
-		$y = "SELECT IDHosp FROM hospitalisation WHERE UUID LIKE '".$patientID."'";
+		$y = "SELECT IDHosp, DateHostpitalisation FROM hospitalisation WHERE UUID LIKE '".$patientID."'";
 		$hospitalisations = $dbh->query($y);
 		return $hospitalisations;
 	}

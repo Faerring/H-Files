@@ -166,7 +166,7 @@ debSquelette();
 						<div class="row hosp">
 							<?php
 								while($ligne=$hospitalisation->fetch()) {
-									echo '<div class="col-lg-3 col-md-6"><p>blabla</p><button name="hosp" type="submit" value="'.$ligne[0].'"><i class="fas fa-folder-open"></i></a></div>';
+									echo '<div class="col-lg-3 col-md-6"><p>'.$ligne[1].'</p><button name="hosp" type="submit" value="'.$ligne[0].'"><i class="fas fa-folder-open"></i></a></div>';
 								}
 							?>
 						</div>
