@@ -62,7 +62,6 @@ function navGenBottom() {
 		echo '
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-					  <li><a href="https://github.com/Faerring/H-Files/wiki" target="about:blank"><i class="fas fa-question-circle"></i></a></li>
 					  <li><a href="../controleur/profil.php"><span class="glyphicon glyphicon-user"></span> '.$_SESSION['user']->getNom().' '.$_SESSION['user']->getPrenom().' </a></li>
 					  <li><a href="../modele/logout.php"><span class="glyphicon glyphicon-log-out"></span> Se déconnecter</a></li>
 					  <li><a href="https://github.com/Faerring/H-Files/wiki" target="about:blank"><i class="fas fa-question-circle"></i></a></li>
