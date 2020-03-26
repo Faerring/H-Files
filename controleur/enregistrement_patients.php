@@ -3,6 +3,10 @@ session_start();
 require_once('../modele/encapsulation.php');
 require('../modele/connexion.php');
 
+if(isset($_SESSION['UUID']) && isset($_POST['ConsultPatient'])){
+    header('Location: ./consultation_patient.php');
+}
+
 if (isset($_POST['AjouterHospitalisation'])) {
     $AjouterHospitalisation = $_POST['AjouterHospitalisation'];
 }
@@ -10,7 +14,7 @@ if (isset($_POST['AjouterHospitalisation'])) {
 if (isset($_POST['hospitalisation'])) {
     $hospitalisation = $_POST['hospitalisation'];
     $beginDate = $_POST['beginDate'];
-    $finishdate = '';
+    $finishdate = 'non connu';
     if (isset($_POST['finishDate'])) {
         $finishdate = $_POST['finishDate'];
     }
@@ -36,5 +40,7 @@ if (isset($_POST['SocialSecurityNumber'])) {
     $nodes = execRequest::getNodesID($dbh);
     $meds = execRequest::getMedTraitant($dbh);
 }
+
+
 require_once('../vue/enregistrement_patients.php');
 ?>

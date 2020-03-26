@@ -15,9 +15,6 @@ debSquelette();
         </div>
     </div>
 <?php
-echo isset($AjouterHospitalisation) ? 'mode ajout hospitalisation activé <br />' : 'mode ajout hospitalisation désactivé <br />';
-echo isset($hospitalisation) ? 'demande d\'ajout d\'hospitalisation détecter la date devrais s\'afficher <br />' : 'demande d\'ajout d\'hospitalisation non détecter <br />';
-echo isset($beginDate) ? 'date de début '.$beginDate.' <br />' : 'date début absente <br />';
 if (isset($idFound)) {
     ?>
     <div class="row">
@@ -138,11 +135,6 @@ if (isset($idFound)) {
                             $_SESSION['prenom'] = $idFound[1];
                             $_SESSION['UUID'] = $idFound[2];
                             ?>
-                            <!--                                <button type="button" class="btn btn-primary btn">Ajouter une hospitalisation-->
-                            <!--                                </button>-->
-                            <!--                                <button type="button" class="btn btn-info btn">Consulter le Dossier Médical-->
-                            <!--                                    Personel-->
-                            <!--                                </button>-->
                             <form method="post">
                                 <input type="submit" name="AjouterHospitalisation" class="btn btn-primary btn"
                                        value="Ajouter une hospitalisation"/>
@@ -160,12 +152,9 @@ if (isset($idFound)) {
     </div>
     <?php
 } else if (isset($AjouterHospitalisation)) {
-    var_dump($nom);
-    var_dump($prenom);
-    var_dump($UUID);
 if ($nom != '' && $prenom != '' && $UUID != ''){
 if (isset($hospitalisation)){
-    echo('une demande d\'hospitalisation a été effectuée pour' . $nom . ' ' . $prenom . ' ' . $UUID . 'date de début ' . $beginDate . ' date de fin ' . $finishdate == '' ? 'non connu' : $finishdate);
+    echo '<p> une demande d\'hospitalisation a été effectuée pour ' . $nom . ' ' . $prenom . ' ( ' . $UUID . ' ) date de début ' . $beginDate . ' date de fin ' . $x . '</p>';
 }else{
     ?>
     <div class="row">
@@ -180,7 +169,8 @@ if (isset($hospitalisation)){
                 <input type="date" name="beginDate" class="form-control" id="beginDate" placeholder="">
 
                 <label for="finishDate">Date de sortit de l'hospitalisation</label>
-                <input type="date" class="form-control nullable" name="finishDate" required="required" id="finishDate" placeholder="">
+                <input type="date" class="form-control nullable" name="finishDate" required="required" id="finishDate"
+                       placeholder="">
 
                 <button type="submit" class="btn btn-primary">Créer l'hospitalisation</button>
                 <button type="reset" id="cancelHosp" class="btn btn-secondary">Annuler la création de
