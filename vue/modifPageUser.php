@@ -1,9 +1,14 @@
 <?php
 include("SqueletteDePage.php");
-debSquelette();
 include("../modele/utilisateur.php");
-$utilisateur = new Utilisateur;
-//$utilisateur->initializeUser();
+session_start();
+//empêcher l'accès à la page sans s'être authentifié
+if (!(isset($_SESSION['user']))){
+    echo "<script language='javascript'>alert('Bien tenté.');</script>";
+    header("refresh:0;url=../controleur/loginpage.php");
+}
+$utilisateur = $_SESSION['user'];
+debSquelette();
 ?>
 
 <div class="row">
@@ -20,10 +25,7 @@ $utilisateur = new Utilisateur;
               <?php
               echo "<li>Nom : ".$utilisateur->getNom()."</li>";
               echo "<li>Pr&eacute;nom : ".$utilisateur->getPrenom()."</li>";
-              echo "<li>Date de naissance : </li>";
-              echo "<li>Adresse : </li>";
-              echo "<li>Code postal : </li>";
-              echo "<li>Ville : </li>";
+            
               ?>
               <form action="../controleur/modifUser.php" method="post">
                 <li>Num&eacute;ro de t&eacute;l&eacute;phone :</li><input type="text" class="form-control" placeholder="Entrez nouveau tel" name="tel" />
@@ -44,7 +46,6 @@ $utilisateur = new Utilisateur;
               echo "<li>Profession :".$utilisateur->getProfession()." </li>";
               echo "<li>Service : </li>";
               echo "<li>Unit&eacute; : </li>";
-              echo "<li>Num&eacute;ro fixe : </li>";
               ?>
             </ul>
 
