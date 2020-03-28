@@ -65,24 +65,22 @@ class Utilisateur {
 	public function setIDWeb($newID){
 		$this->IDWeb = $newID;
 	}
-	public function setMail($newMail){
-		require('connexion.php');
+	public function setMail($newMail,$dbh){
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////
-		$sql = "UPDATE 'personnel' SET 'mail' = ".$newMail."WHERE 'IDPerso' =".$id;
+		$id = $this->IDPerso;
+		$sql = "UPDATE personnel SET mail = '".$newMail."'WHERE IDPerso ='".$id."'";
 
 		$dbh->exec($sql);
 		$this->mail = $newMail;
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////
 	}
-	public function setMobilePhone($newTel) {
-		require('connexion.php');
-		if (strlen($newTel) != 10) {
-		  return "Le numéro de téléphone doit contenir 10 caractères";
-		}
+	public function setMobilePhone($newTel,$dbh) {
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////
-		$sql = "UPDATE 'personnel' SET 'tel' = ".$newTel."WHERE 'IDPerso' =".$id;
+		$id = $this->IDPerso;
+		$sql = "UPDATE personnel SET tel ='".$newTel."' WHERE IDPerso ='".$id."'";
 		$dbh->exec($sql);
 		$this->tel = $newTel;
+
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////
 	}
 }
