@@ -29,17 +29,14 @@ if (isset($_SESSION['UUID'])) {
 
 if (isset($_POST['Nom'])) {
     $nom = $_POST['Nom'];
-    $_SESSION['nom'] = $nom;
 }
 
 if (isset($_POST['Prenom'])) {
     $prenom = $_POST['Prenom'];
-    $_SESSION['prenom'] = $prenom;
 }
 
 if (isset($_POST['UUID'])) {
     $UUID = $_POST['UUID'];
-    $_SESSION['UUID'] = $UUID;
 }
 
 if (isset($_POST['IDNoeud'])) {
@@ -64,7 +61,6 @@ if (isset($_POST['hospitalisation'])) {
     }
     $service = execRequest::getServicesFromHisName($IDNoeud, $dbh);
     AddHospitalisation($UUID, $beginDate, $finishdate, $service, $dbh);
-    session_unset();
 }
 
 if (isset($_POST['SocialSecurityNumber'])) {
