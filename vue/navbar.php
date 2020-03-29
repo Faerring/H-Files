@@ -31,7 +31,7 @@ function navbarAdmin() {
 function navbarSec() {
 	echo '
 					<li class="'.active("profil.php").'"><a href="../controleur/profil.php">Profil</a></li>
-					<li class="'.active("enregistrement.php").'"><a href="../controleur/enregistrement_patients.php">Enregistrement Patients</a></li>
+					<li class="'.active("enregistrement_patients.php").'"><a href="../controleur/enregistrement_patients.php">Enregistrement Patients</a></li>
 					<li class="'.active("contact.php").'"><a href="../controleur/contact.php">Qui sommes nous ?</a></li>
 	';
 }
