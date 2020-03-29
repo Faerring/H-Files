@@ -173,17 +173,32 @@ class execRequest {
         return $dbh->query($x);
     }
 
-	public static function addPatient($UUID, $numSecu, $numSecuRepLegal, $numVitale, $nom, $prenom, $sexe, $dateNaissance, $adresse, $lieuNaissance, $telephone, $IDNoeud, $IDMedTraitant, $dbh)
+	public static function addPatient($UUID, $numSecu, $numSecuRepLegal, $nom, $prenom, $sexe, $dateNaissance, $adresse, $lieuNaissance, $telephone, $IDNoeud, $IDMedTraitant, $dbh)
 	{
-		$x = 'INSERT INTO `dmp_patient` (`UUID`, `numSecu`, `numSecuRepLegal`, `numVitale`, `nom`, `prenom`, `sexe`, `dateNaissance`, `adresse`, `lieuNaissance`, `telephone`, `IDNoeud`, `IDMedTraitant`) VALUES (`'.$UUID.'`,`'. $numSecu.'`,`'. $numSecuRepLegal.'`,`'. $numVitale.'`,`'. $nom.'`,`'. $prenom.'`,`'. $sexe.'`,`'. $dateNaissance.'`,`'. $adresse.'`,`'.$lieuNaissance.'`,`'.$telephone.'`,`'.$IDNoeud.'`,`'.$IDMedTraitant.')';
+		$x = 'INSERT INTO `dmp_patient` (`UUID`, `numSecu`, `numSecuRepLegal`, `nom`, `prenom`, `sexe`, `dateNaissance`, `adresse`, `lieuNaissance`, `telephone`, `IDNoeud`, `IDMedTraitant`, `numRespLegal`) VALUES ("'.$UUID.'","'. $numSecu.'","'. $numSecuRepLegal.'","'. $nom.'","'. $prenom.'","'. $sexe.'","'. $dateNaissance.'","'. $adresse.'","'.$lieuNaissance.'","'.$telephone.'","'.$IDNoeud.'","'.$IDMedTraitant.'",NULL);';
 		return $dbh->query($x);
 	}
 
     /*---------------------------------------------------------------------------------------------------*/
-	public static function getNodesID($dbh)
+	public static function getServices($dbh)
 	{
-		$x = 'SELECT `IDNoeud` FROM `noeud`';
+		$x = 'SELECT `nom` FROM `noeud` WHERE `niveau` = "2";';
 		return $dbh->query($x);
+	}
+
+	public static function getServicesFromHisName($servicename,$dbh)
+	{
+		$service = explode(" ",$servicename)[1];
+		$x = 'SELECT `IDNoeud` FROM `noeud` WHERE `nom` = "'.$service.'";';
+		return $dbh->query($x)->fetch()[0];
+	}
+
+	public static function getMedFromHisName($IDMedTraitant,$dbh)
+	{
+		$MedTraitant = explode( ":",$IDMedTraitant);
+		$MedTraitant = str_replace(' ','',$MedTraitant);
+		$x = 'SELECT `IDMedTraitant` FROM `medecintraitant` WHERE `nom` = "'.$MedTraitant[1].'" ';
+		return $dbh->query($x)->fetch()[0];
 	}
 
     /*---------------------------------------------------------------------------------------------------*/
@@ -192,6 +207,8 @@ class execRequest {
 		$x = 'SELECT `IDMedTraitant`,`nom` FROM `medecintraitant` ';
 		return $dbh->query($x);
     }
+
+
 }
 
 ?>

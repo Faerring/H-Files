@@ -1,7 +1,13 @@
 <?php
+
 session_start();
-require_once('../modele/encapsulation.php');
-require('../modele/connexion.php');
+include_once '../modele/connexion.php';
+require '../modele/enregistrement_patients.php';
+include_once '../modele/encapsulation.php';
+
+if(isset($_POST['creerdossier'])){
+    createDMP($_POST['UUID'], $_POST['NSS'], $_POST['NSSRepLegal'], $_POST['Nom'], $_POST['Prenom'], $_POST['sexe'], $_POST['DateDeNaissance'], $_POST['Adresse'], $_POST['lieuNaissance'], $_POST['telephone'], execRequest::getServicesFromHisName($_POST['IDNoeud'],$dbh), execRequest::getMedFromHisName($_POST['IDMedTraitant'],$dbh), $dbh);
+}
 
 if(isset($_SESSION['UUID']) && isset($_POST['ConsultPatient'])){
     header('Location: ./consultation_patient.php');
@@ -18,6 +24,8 @@ if (isset($_POST['hospitalisation'])) {
     if (isset($_POST['finishDate'])) {
         $finishdate = $_POST['finishDate'];
     }
+    $service = execRequest::getServicesFromHisName($_POST['IDNoeud'],$dbh);
+    AddHospitalisation($UUID,$beginDate,$finishdate,$service);
 }
 
 if (isset($_SESSION['nom'])) {
@@ -37,10 +45,10 @@ if (isset($_POST['SocialSecurityNumber'])) {
     $firstName = $info['prenom'];
     $UUID = $info['UUID'];
     $idFound = array($name, $firstName, $UUID);
-    $nodes = execRequest::getNodesID($dbh);
+    $nodes = execRequest::getServices($dbh);
     $meds = execRequest::getMedTraitant($dbh);
 }
 
 
-require_once('../vue/enregistrement_patients.php');
-?>
+include '../vue/enregistrement_patients.php';
+

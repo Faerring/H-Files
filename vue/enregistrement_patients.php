@@ -1,5 +1,5 @@
 <?php
-require_once("SqueletteDePage.php");
+include("SqueletteDePage.php");
 debSquelette();
 ?>
     <div class="row">
@@ -23,20 +23,22 @@ if (isset($idFound)) {
             if ($idFound[2] == null) {
                 ?>
                 <p> aucun patient trouver, création d'un nouveau dossier :</p><br/>
-                <form>
+                <form method="post">
                     <div class="form-group">
                         <label for="UUID">UUID</label>
-                        <input type="text" class="form-control" id="UUID" placeholder="Entrer UUID">
+                        <input type="text" class="form-control" id="UUID" name="UUID" placeholder="Entrer UUID">
                     </div>
                     <div class="form-group">
                         <label for="NSS">Numéro de sécurité social</label>
                         <input type="text" pattern="[0-9]{15}" required="required" class="form-control" id="NSS"
+                               name="NSS"
                                placeholder="Entrer Numéro de sécurité social">
                     </div>
                     <div class="form-group">
                         <label for="NSSRepLegal">Numéro de sécurité social du résponsable légale</label>
                         <input type="text" pattern="[0-9]{15}" class="form-control nullable" data-toggle="tooltip"
                                data-placement="top" data-custom-class="tooltip-primary" id="NSSRepLegal"
+                               name="NSSRepLegal"
                                placeholder="Entrer Numéro de sécurité social du résponsable légale"
                                required="required">
                     </div>
@@ -44,16 +46,17 @@ if (isset($idFound)) {
                         <label for="Nom">Nom</label>
                         <input type="text" class="form-control nullable" data-toggle="tooltip" data-placement="top"
                                data-custom-class="tooltip-primary" data-toggle="tooltip" data-placement="top"
-                               data-custom-class="tooltip-primary" id="Nom" placeholder="Entrer le Nom">
+                               data-custom-class="tooltip-primary" id="Nom" name="Nom" placeholder="Entrer le Nom">
                     </div>
                     <div class="form-group">
                         <label for="Prenom">Prénom</label>
                         <input type="text" class="form-control nullable" data-toggle="tooltip" data-placement="top"
-                               data-custom-class="tooltip-primary" id="Prenom" placeholder="Enter le Prénom">
+                               data-custom-class="tooltip-primary" id="Prenom" name="Prenom"
+                               placeholder="Enter le Prénom">
                     </div>
                     <div class="form-group">
                         <label for="sexe">Sexe</label>
-                        <select class="form-control" id="sexe" required="required">
+                        <select class="form-control" id="sexe" name="sexe" required="required">
                             <option value="" disabled selected>Selectionner le sexe</option>
                             <option>Homme</option>
                             <option>Femme</option>
@@ -63,18 +66,19 @@ if (isset($idFound)) {
                     <div class="form-group">
                         <label for="DateDeNaissance">Date De Naissance</label>
                         <input type="date" class="form-control nullable" data-toggle="tooltip" data-placement="top"
-                               data-custom-class="tooltip-primary" id="DateDeNaissance"
+                               data-custom-class="tooltip-primary" id="DateDeNaissance" name="DateDeNaissance"
                                placeholder="Entrer Date De Naissance">
                     </div>
                     <div class="form-group">
                         <label for="Adresse">Adresse</label>
                         <input type="text" class="form-control nullable" data-toggle="tooltip" data-placement="top"
-                               data-custom-class="tooltip-primary" id="Adresse" placeholder="Entrer une adresse">
+                               data-custom-class="tooltip-primary" id="Adresse" name="Adresse"
+                               placeholder="Entrer une adresse">
                     </div>
                     <div class="form-group">
                         <label for="lieuNaissance">Lieu de naissance</label>
                         <input type="text" class="form-control nullable" data-toggle="tooltip" data-placement="top"
-                               data-custom-class="tooltip-primary" id="lieuNaissance"
+                               data-custom-class="tooltip-primary" id="lieuNaissance" name="lieuNaissance"
                                placeholder="Entrer le lieu de naissance">
                     </div>
                     <div class="form-group">
@@ -82,16 +86,17 @@ if (isset($idFound)) {
                         <input type="tel" class="form-control nullable" data-toggle="tooltip" data-placement="top"
                                data-custom-class="tooltip-primary"
                                pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$" id="telephone"
+                               name="telephone"
                                placeholder="Entrer numéro de téléphone">
                     </div>
                     <div class="form-group">
-                        <label for="IDNoeud">Noeud</label>
-                        <select class="form-control" id="IDNoeud" required="required">
-                            <option value="" disabled selected>Selectionner le noeud</option>
+                        <label for="IDNoeud">Service</label>
+                        <select class="form-control" id="IDNoeud" name="IDNoeud" required="required">
+                            <option value="" disabled selected>Selectionner le service</option>
                             <?php
                             if (isset($nodes)) {
                                 while ($node = $nodes->fetch()) {
-                                    echo '<option>' . $node[0] . '</option>';
+                                    echo '<option>service ' . $node[0] . '</option>';
                                 }
                             }
                             ?>
@@ -100,19 +105,23 @@ if (isset($idFound)) {
                     <div class="form-group">
                         <label for="IDMedTraitant">Medecin Traitant</label>
                         <select class="form-control nullable" data-toggle="tooltip" data-placement="top"
-                                data-custom-class="tooltip-primary" id="IDMedTraitant">
+                                data-custom-class="tooltip-primary" id="IDMedTraitant" name="IDMedTraitant">
                             <option value="" disabled selected>Selectionner le Medecin Traitant</option>
                             <?php
                             if (isset($meds)) {
                                 while ($med = $meds->fetch()) {
-                                    echo '<option>' . $med[0] . ' Nom :' . $med[1] . '</option>';
+                                    echo '<option>' . $med[0] . ' Nom : ' . $med[1] . '</option>';
                                 }
                             }
                             ?>
                         </select>
                     </div>
+                    <input type="hidden" name="creerdossier" id="creerdossier" value="1">
+
                     <button type="submit" class="btn btn-primary">Créé le dossier</button>
-                    <button type="reset" id="cancel" class="btn btn-secondary">Annuler la création de dossier</button>
+                    <button type="reset" id="cancel" class="btn btn-secondary">Annuler la création de
+                        dossier
+                    </button>
                     <script type="text/javascript">
                         document.getElementById("cancel").onclick = function () {
                             location.href = "../vue/enregistrement_patients.php";
@@ -171,7 +180,17 @@ if (isset($hospitalisation)){
                 <label for="finishDate">Date de sortit de l'hospitalisation</label>
                 <input type="date" class="form-control nullable" name="finishDate" required="required" id="finishDate"
                        placeholder="">
-
+                <label for="IDNoeud">Service</label>
+                <select class="form-control" id="IDNoeud" required="required">
+                    <option value="" disabled selected>Selectionner le service</option>
+                    <?php
+                    if (isset($nodes)) {
+                        while ($node = $nodes->fetch()) {
+                            echo '<option>service ' . $node[0] . '</option>';
+                        }
+                    }
+                    ?>
+                </select>
                 <button type="submit" class="btn btn-primary">Créer l'hospitalisation</button>
                 <button type="reset" id="cancelHosp" class="btn btn-secondary">Annuler la création de
                     l'Hospitalisation

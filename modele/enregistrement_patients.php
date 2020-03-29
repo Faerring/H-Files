@@ -1,43 +1,44 @@
 <?php
 
 
-function createFolder($UUID, $numSecu, $numSecuRepLegal, $numVitale, $nom, $prenom, $sexe, $dateNaissance, $adresse, $lieuNaissance, $telephone, $IDNoeud, $IDMedTraitant, $dbh)
+function createDMP($UUID, $numSecu, $numSecuRepLegal, $nom, $prenom, $sexe, $dateNaissance, $adresse, $lieuNaissance, $telephone, $IDNoeud, $IDMedTraitant, $dbh)
 {
-    require('encapsulation.php');
     if (!folderExist($nom, $prenom, $UUID, $dbh)) {
         $dirname = $nom . ' ' . $prenom . ' (' . $UUID . ')';
-        execRequest::addPatient($UUID, $numSecu, $numSecuRepLegal, $numVitale, $nom, $prenom, $sexe, $dateNaissance, $adresse, $lieuNaissance, $telephone, $IDNoeud, $IDMedTraitant, $dbh);
+        execRequest::addPatient($UUID, $numSecu, $numSecuRepLegal, $nom, $prenom, $sexe, $dateNaissance, $adresse, $lieuNaissance, $telephone, $IDNoeud, $IDMedTraitant, $dbh);
+//        mkdir('../patients/'.$dirname);
     }
 }
 
 
-function dirNameFromUUID($UUID)
+function dirNameFromUUID($UUID,$dbh)
 {
-    require('encapsulation.php');
-    $info = execRequest::folderInfoFromUUID();
+
+    $info=execRequest::folderInfoFromNSS(execRequest::NssFromUUID($UUID,$dbh),$dbh);
     return($info['nom'] . ' ' . $info['prenom'] . ' (' . $UUID . ')');
 
 }
 
-function AddHospitalisation($UUID,$date,$service,$dbh)
+function AddHospitalisation($UUID,$datein,$dateout,$service,$dbh)
 {
     $name = "";
     $firstname = "";
     try {
-        $info=execRequest::folderInfoFromNSS(execRequest::NssFromUUID($UUID));
+        $info=execRequest::folderInfoFromNSS(execRequest::NssFromUUID($UUID,$dbh),$dbh);
         $name = $info['nom'];
         $firstname = $info['prenom'];;
     }catch (PDOException $e){
         echo '<h1> no folder found in database for '.$UUID.'</h1>';
     }
-    if(folderExist($name, $firstname, $UUID,$dbh)){
-        mkdir('../patients/'.dirNameFromUUID($UUID).'/Hospitalisation du '.$date.' service - '.$service);
+//    if(folderExist($name, $firstname, $UUID,$dbh)){
+    if(true){
+//        mkdir('../patients/'.dirNameFromUUID($UUID).'/Hospitalisation du '.$datein.' service - '.$service);
+        execRequest::addHospitalisation("1", $datein, $dateout, $UUID, $dbh);
     }
 }
 
 function folderExist($nom, $prenom, $NSS, $dbh)
 {
-    require('encapsulation.php');
     $UUID= execRequest::UUIDFromNss($NSS,$dbh)->fetch();
     $dirname = $nom . ' ' . $prenom . ' (' . $UUID . ')';
     $filename = "../patiens/" . $dirname . "/";
