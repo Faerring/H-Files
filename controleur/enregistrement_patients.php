@@ -64,7 +64,6 @@ if (isset($_POST['hospitalisation'])) {
     }
     $service = execRequest::getServicesFromHisName($IDNoeud, $dbh);
     AddHospitalisation($UUID, $beginDate, $finishdate, $service, $dbh);
-    session_unset();
 }
 
 if (isset($_POST['SocialSecurityNumber'])) {
@@ -81,3 +80,4 @@ if (isset($_POST['SocialSecurityNumber'])) {
 
 include '../vue/enregistrement_patients.php';
 
+?>
