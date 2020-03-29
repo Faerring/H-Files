@@ -23,7 +23,7 @@ if (isset($idFound)) {
             if ($idFound[2] == null) {
                 ?>
                 <p> aucun patient trouver, création d'un nouveau dossier :</p><br/>
-                <form method="post">
+                <form autocomplete="off" method="post">
                     <div class="form-group">
                         <label for="UUID">UUID</label>
                         <input type="text" class="form-control" id="UUID" name="UUID" placeholder="Entrer UUID">
@@ -144,7 +144,7 @@ if (isset($idFound)) {
                             $_SESSION['prenom'] = $idFound[1];
                             $_SESSION['UUID'] = $idFound[2];
                             ?>
-                            <form method="post">
+                            <form autocomplete="off" method="post">
                                 <input type="submit" name="AjouterHospitalisation" class="btn btn-primary btn"
                                        value="Ajouter une hospitalisation"/>
 
@@ -171,7 +171,7 @@ if (isset($hospitalisation)){
             <?php
             echo '<p>Ajout d\'une hospitalisation pour ' . $nom . ' ' . $prenom . ' ( ' . $UUID . ' )</p><br />';
             ?>
-            <form method="post">
+            <form autocomplete="off" method="post">
                 <input type="hidden" name="hospitalisation" id="hospitalisation" value="1">
                 <input type="hidden" name="AjouterHospitalisation" id="AjouterHospitalisation" value="1">
                 <label for="beginDate">Date de début de l'hospitalisation</label>
