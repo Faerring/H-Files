@@ -11,37 +11,38 @@ function createDMP($UUID, $numSecu, $numSecuRepLegal, $nom, $prenom, $sexe, $dat
 }
 
 
-function dirNameFromUUID($UUID,$dbh)
+function dirNameFromUUID($UUID, $dbh)
 {
 
-    $info=execRequest::folderInfoFromNSS(execRequest::NssFromUUID($UUID,$dbh),$dbh);
-    return($info['nom'] . ' ' . $info['prenom'] . ' (' . $UUID . ')');
+    $info = execRequest::folderInfoFromNSS(execRequest::NssFromUUID($UUID, $dbh), $dbh);
+    return ($info['nom'] . ' ' . $info['prenom'] . ' (' . $UUID . ')');
 
 }
 
-function AddHospitalisation($UUID,$datein,$dateout,$service,$dbh)
+function AddHospitalisation($UUID, $datein, $dateout, $service, $dbh)
 {
-    $name = "";
-    $firstname = "";
-    try {
-        $info=execRequest::folderInfoFromNSS(execRequest::NssFromUUID($UUID,$dbh),$dbh);
-        $name = $info['nom'];
-        $firstname = $info['prenom'];;
-    }catch (PDOException $e){
-        echo '<h1> no folder found in database for '.$UUID.'</h1>';
-    }
+//    $name = "";
+//    $firstname = "";
+//    try {
+//        $info=execRequest::folderInfoFromNSS(execRequest::NssFromUUID($UUID,$dbh),$dbh);
+//        $name = $info['nom'];
+//        $firstname = $info['prenom'];;
+//    }catch (PDOException $e){
+//        echo '<h1> no folder found in database for '.$UUID.'</h1>';
+//    }
 //    if(folderExist($name, $firstname, $UUID,$dbh)){
-    if(true){
+    if (true) {
 //        mkdir('../patients/'.dirNameFromUUID($UUID).'/Hospitalisation du '.$datein.' service - '.$service);
-        execRequest::addHospitalisation("1", $datein, $dateout, $UUID, $dbh);
+        execRequest::addHospitalisation($datein, $dateout, $UUID, $service, $dbh);
     }
 }
 
 function folderExist($nom, $prenom, $NSS, $dbh)
 {
-    $UUID= execRequest::UUIDFromNss($NSS,$dbh)->fetch();
+    $UUID = execRequest::UUIDFromNss($NSS, $dbh)->fetch();
     $dirname = $nom . ' ' . $prenom . ' (' . $UUID . ')';
     $filename = "../patiens/" . $dirname . "/";
     return file_exists($filename);
 }
+
 ?>

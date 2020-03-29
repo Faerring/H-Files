@@ -116,7 +116,8 @@ if (isset($idFound)) {
                             ?>
                         </select>
                     </div>
-                    <input type="hidden" name="creerdossier" id="creerdossier" value="1">
+                    <input type="hidden" name="creerdossier" value="1">
+                    <input type="hidden" name="AjouterHospitalisation" value="1">
 
                     <button type="submit" class="btn btn-primary">Créé le dossier</button>
                     <button type="reset" id="cancel" class="btn btn-secondary">Annuler la création de
@@ -163,7 +164,7 @@ if (isset($idFound)) {
 } else if (isset($AjouterHospitalisation)) {
 if ($nom != '' && $prenom != '' && $UUID != ''){
 if (isset($hospitalisation)){
-    echo '<p> une demande d\'hospitalisation a été effectuée pour ' . $nom . ' ' . $prenom . ' ( ' . $UUID . ' ) date de début ' . $beginDate . ' date de fin ' . $x . '</p>';
+//    echo '<p> une demande d\'hospitalisation a été effectuée pour ' . $nom . ' ' . $prenom . ' ( ' . $UUID . ' ) date de début ' . $beginDate . ' date de fin ' . $finishdate . ' au service '.$_SESSION['IDNoeud'].'</p>';
 }else{
     ?>
     <div class="row">
@@ -180,17 +181,23 @@ if (isset($hospitalisation)){
                 <label for="finishDate">Date de sortit de l'hospitalisation</label>
                 <input type="date" class="form-control nullable" name="finishDate" required="required" id="finishDate"
                        placeholder="">
-                <label for="IDNoeud">Service</label>
-                <select class="form-control" id="IDNoeud" required="required">
-                    <option value="" disabled selected>Selectionner le service</option>
-                    <?php
-                    if (isset($nodes)) {
-                        while ($node = $nodes->fetch()) {
-                            echo '<option>service ' . $node[0] . '</option>';
-                        }
-                    }
+                <?php
+                if (!isset($_SESSION['IDNoeud'])) {
                     ?>
-                </select>
+                    <label for="IDNoeud">Service</label>
+                    <select class="form-control" id="IDNoeud" name="IDNoeud" required="required">
+                        <option value="" disabled selected>Selectionner le service</option>
+                        <?php
+                        if (isset($nodes)) {
+                            while ($node = $nodes->fetch()) {
+                                echo '<option>service ' . $node[0] . '</option>';
+                            }
+                        }
+                        ?>
+                    </select>
+                    <?php
+                }
+                ?>
                 <button type="submit" class="btn btn-primary">Créer l'hospitalisation</button>
                 <button type="reset" id="cancelHosp" class="btn btn-secondary">Annuler la création de
                     l'Hospitalisation
