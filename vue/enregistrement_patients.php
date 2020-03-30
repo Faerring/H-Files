@@ -170,7 +170,7 @@ if (isset($hospitalisation)){
     <div class="row">
         <div class="col-lg-offset-1 col-lg-10" id="newpatient">
             <?php
-            echo '<p>Ajout d\'une hospitalisation pour ' . $nom . ' ' . $prenom . ' ( ' . $UUID . ' )</p><br />';
+            echo '<p>Ajout d\'une hospitalisation pour ' . $nom . ' ' . $prenom . ' (' .$UUID. ')</p><br />';
             ?>
             <form autocomplete="off" method="post">
                 <input type="hidden" name="hospitalisation" id="hospitalisation" value="1">
