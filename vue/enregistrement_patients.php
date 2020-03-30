@@ -135,7 +135,7 @@ if (isset($idFound)) {
 
             } else {
                 ?>
-                <p> un patient trouver :</p><br/>
+                <p> un patient trouvé :</p><br/>
                 <div class="container">
                     <div class="row">
                         <div class="col col-lg-auto" style="display: inline-block;">
