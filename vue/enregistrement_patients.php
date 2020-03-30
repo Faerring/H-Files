@@ -6,7 +6,7 @@ debSquelette();
         <div class="col-lg-offset-1 col-lg-10">
             <form method="post" action="../controleur/enregistrement_patients.php" autocomplete="off">
                 <div class="form-group">
-                    <label for="SocialSecurityNumber">numéro de sécurité social</label>
+                    <label for="SocialSecurityNumber">Numéro de sécurité social</label>
                     <input type="text" class="form-control" name="SocialSecurityNumber" id="SocialSecurityNumber"
                            pattern="[0-9]{15}" placeholder="0 00 00 00 000 000 00" required="">
                 </div>
@@ -22,7 +22,7 @@ if (isset($idFound)) {
             <?php
             if ($idFound[2] == null) {
                 ?>
-                <p> aucun patient trouver, création d'un nouveau dossier :</p><br/>
+                <p> aucun patient trouvé, création d'un nouveau dossier :</p><br/>
                 <form autocomplete="off" method="post">
                     <div class="form-group">
                         <label for="UUID">UUID</label>
