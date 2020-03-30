@@ -76,4 +76,5 @@ if (isset($_POST['SocialSecurityNumber'])) {
 
 
 include '../vue/enregistrement_patients.php';
+
 ?>
